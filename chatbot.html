@@ -1,185 +1,227 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Total Body Physio</title>
-    <style>
-        /* ... (previous styles remain) ... */
-        
-        .service-details {
-            display: none;
-            background-color: #ffffff;
-            padding: 1rem;
-            border-radius: 0 0 10px 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-        
-        .chatbot-container {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 350px;
-            height: 500px;
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            overflow: hidden;
-            display: none;
-        }
-        
-        .chatbot-header {
-            background-color: #036F39;
-            color: #fff;
-            padding: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .chatbot-toggle {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #036F39;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
+import React, { useState } from 'react';
+import { Send, MapPin, Calendar, HelpCircle, Phone, Clock, AlertCircle, ExternalLink } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
 
-        /* ... (rest of the styles remain) ... */
-    </style>
-</head>
-<body>
-    <header>
-        <div class="container header-content">
-            <img src="832A3692-4798-48A1-A179-8AFF3B819C10.pdf.png" alt="Total Body Physio Logo" class="logo">
-            <nav>
-                <ul>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#locations">Locations</a></li>
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="#faq">FAQ</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
+const clinics = [
+  { 
+    name: 'Pakuranga', 
+    address: '1 Sir Lloyd Drive, Pakuranga Heights, Auckland', 
+    phone: '09 535 1932',
+    mapLink: 'https://goo.gl/maps/example1',
+    hours: 'Monday-Friday: 7am-7pm, Saturday: 8am-1pm',
+    bookingLink: 'https://total-body-physio.au1.cliniko.com/bookings?business_id=90633'
+  },
+  { 
+    name: 'Titirangi', 
+    address: '2 Rangiwai Rd, Titirangi 0604', 
+    phone: '09 817 7377',
+    mapLink: 'https://goo.gl/maps/example2',
+    hours: 'Monday-Friday: 7am-7pm, Saturday: 8am-1pm',
+    bookingLink: 'https://total-body-physio.au1.cliniko.com/bookings?business_id=90865'
+  },
+  { 
+    name: 'Flat Bush', 
+    address: '14 Fusion Rd, Flat Bush, Auckland', 
+    phone: '09 265 2323',
+    mapLink: 'https://goo.gl/maps/example3',
+    hours: 'Monday-Friday: 7am-7pm, Saturday: 8am-1pm',
+    bookingLink: 'https://total-body-physio.au1.cliniko.com/bookings?business_id=90635'
+  }
+];
+
+const prices = {
+  acc: { initial: 35, followUp: 30 },
+  private: { initial: 90, followUp: 80 }
+};
+
+const generalBookingLink = 'https://total-body-physio.au1.cliniko.com/bookings';
+
+const cancellationPolicy = `
+Please provide 24 hours notice for cancellations. You can:
+- Call us
+- Reply to your appointment SMS or email
+- Use the link in your confirmation email
+Late cancellations may incur a fee of $40.
+`;
+
+const accDefinition = `
+An ACC injury is typically defined as a personal injury caused by:
+1. An accident (a specific event involving the application of force or resistance external to the human body)
+2. A gradual process, disease, or infection resulting from work tasks
+3. Medical treatment
+4. Sexual violence
+
+The injury must occur at a specific time and place in New Zealand. ACC coverage helps ensure that all New Zealanders receive comprehensive injury cover, regardless of how the injury occurred.
+`;
+
+const Chatbot = () => {
+  const [messages, setMessages] = useState([]);
+  const [inputValue, setInputValue] = useState('');
+
+  const handleInputChange = (e) => {
+    setInputValue(e.target.value);
+  };
+
+  const handleSend = () => {
+    if (inputValue.trim() === '') return;
+    
+    const userMessage = inputValue;
+    setMessages(prev => [...prev, { text: userMessage, sender: 'user' }]);
+    setInputValue('');
+    
+    const botResponse = generateResponse(userMessage.toLowerCase());
+    setMessages(prev => [...prev, { text: botResponse, sender: 'bot' }]);
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      handleSend();
+    }
+  };
+
+  const generateResponse = (query) => {
+    // Check for specific clinic names
+    const clinic = clinics.find(c => query.includes(c.name.toLowerCase()));
+    if (clinic) {
+      return (
+        <div>
+          <p className="font-bold">{clinic.name} Clinic Information:</p>
+          <p><MapPin className="inline mr-2 h-4 w-4" />{clinic.address}</p>
+          <p><Phone className="inline mr-2 h-4 w-4" />{clinic.phone}</p>
+          <p><Clock className="inline mr-2 h-4 w-4" />{clinic.hours}</p>
+          <Button variant="link" onClick={() => window.open(clinic.mapLink, '_blank')}>
+            <MapPin className="mr-2 h-4 w-4" /> View on Map
+          </Button>
+          <Button variant="link" onClick={() => window.open(clinic.bookingLink, '_blank')}>
+            <Calendar className="mr-2 h-4 w-4" /> Book at {clinic.name}
+          </Button>
         </div>
-    </header>
+      );
+    }
 
-    <section class="hero">
-        <div class="container">
-            <h1>Expert Physiotherapy for Total Body Wellness</h1>
-            <p>Personalised care to help you move, feel, and live better</p>
-            <a href="https://total-body-physio.au1.cliniko.com/bookings" class="button" target="_blank">Book an Appointment</a>
-        </div>
-    </section>
-
-    <section id="services" class="services">
-        <div class="container">
-            <h2>Our Services</h2>
-            <div class="services-grid">
-                <div class="service">
-                    <h3>Sports Injury Rehabilitation</h3>
-                    <p>Specialised treatment to address your specific needs and goals.</p>
-                    <button class="button" onclick="toggleService('sports-injury')">Learn More</button>
-                    <div id="sports-injury" class="service-details">
-                        <p>Our sports injury rehabilitation program is designed to help athletes of all levels recover from injuries and return to peak performance. We use a combination of targeted exercises, manual therapy, and cutting-edge techniques to address the specific demands of your sport and your body.</p>
-                        <ul>
-                            <li>Comprehensive injury assessment</li>
-                            <li>Customized rehabilitation plans</li>
-                            <li>Sport-specific training and conditioning</li>
-                            <li>Injury prevention strategies</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="service">
-                    <h3>Manual Therapy</h3>
-                    <p>Hands-on techniques to improve mobility and reduce pain.</p>
-                    <button class="button" onclick="toggleService('manual-therapy')">Learn More</button>
-                    <div id="manual-therapy" class="service-details">
-                        <p>Our manual therapy services provide hands-on treatment to manipulate and mobilize your joints and soft tissues. This approach can significantly improve your mobility, reduce pain, and enhance your overall physical function.</p>
-                        <ul>
-                            <li>Joint mobilization and manipulation</li>
-                            <li>Soft tissue massage and release techniques</li>
-                            <li>Myofascial release</li>
-                            <li>Trigger point therapy</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="service">
-                    <h3>Postural Correction</h3>
-                    <p>Customized programs to improve your posture and prevent injuries.</p>
-                </div>
+    // General queries
+    if (query.includes('location') || query.includes('address') || query.includes('phone')) {
+      return (
+        <div>
+          Our clinics are:
+          {clinics.map((clinic, index) => (
+            <div key={index} className="mb-4">
+              <p className="font-bold">{clinic.name}</p>
+              <p><MapPin className="inline mr-2 h-4 w-4" />{clinic.address}</p>
+              <p><Phone className="inline mr-2 h-4 w-4" />{clinic.phone}</p>
+              <Button variant="link" onClick={() => window.open(clinic.mapLink, '_blank')}>
+                <MapPin className="mr-2 h-4 w-4" /> View on Map
+              </Button>
             </div>
+          ))}
         </div>
-    </section>
-
-    <section id="locations" class="locations">
-        <div class="container">
-            <h2>Our Locations</h2>
-            <div class="locations-grid">
-                <div class="location">
-                    <h3>Pakuranga</h3>
-                    <p>1 Sir Lloyd Drive, Pakuranga Heights, Auckland</p>
-                    <p>Phone: 09 535 1932</p>
-                    <a href="pakuranga.html" class="button">Learn More</a>
-                </div>
-                <div class="location">
-                    <h3>Titirangi</h3>
-                    <p>2 Rangiwai Rd, Titirangi 0604</p>
-                    <p>Phone: 09 817 7377</p>
-                    <a href="titirangi.html" class="button">Learn More</a>
-                </div>
-                <div class="location">
-                    <h3>Flat Bush</h3>
-                    <p>14 Fusion Rd, Flat Bush, Auckland</p>
-                    <p>Phone: 09 265 2323</p>
-                    <a href="flatbush.html" class="button">Learn More</a>
-                </div>
+      );
+    } else if (query.includes('price') || query.includes('cost')) {
+      return (
+        <div>
+          Our prices are:
+          <p>ACC: Initial ${prices.acc.initial}, Follow-up ${prices.acc.followUp}</p>
+          <p>Private: Initial ${prices.private.initial}, Follow-up ${prices.private.followUp}</p>
+        </div>
+      );
+    } else if (query.includes('book') || query.includes('appointment')) {
+      return (
+        <div>
+          <p>You can book an appointment online for any of our clinics:</p>
+          {clinics.map((clinic, index) => (
+            <Button key={index} variant="link" onClick={() => window.open(clinic.bookingLink, '_blank')}>
+              <Calendar className="mr-2 h-4 w-4" /> Book at {clinic.name}
+            </Button>
+          ))}
+          <p>Or use our general booking page:</p>
+          <Button variant="link" onClick={() => window.open(generalBookingLink, '_blank')}>
+            <Calendar className="mr-2 h-4 w-4" /> General Booking
+          </Button>
+        </div>
+      );
+    } else if (query.includes('hour') || query.includes('open')) {
+      return (
+        <div>
+          Our clinic hours:
+          {clinics.map((clinic, index) => (
+            <div key={index} className="mb-2">
+              <p className="font-bold">{clinic.name}:</p>
+              <p><Clock className="inline mr-2 h-4 w-4" />{clinic.hours}</p>
             </div>
+          ))}
         </div>
-    </section>
-
-    <!-- ... (About and FAQ sections remain the same) ... -->
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 Total Body Physio. All rights reserved.</p>
+      );
+    } else if (query.includes('cancel') || query.includes('reschedule')) {
+      return (
+        <div>
+          <p className="font-bold">Cancellation Policy:</p>
+          <p><AlertCircle className="inline mr-2 h-4 w-4" />{cancellationPolicy}</p>
         </div>
-    </footer>
-
-    <button class="chatbot-toggle" onclick="toggleChatbot()">Chat with us</button>
-
-    <div class="chatbot-container" id="chatbot">
-        <div class="chatbot-header">
-            <h3>Total Body Physio Chat</h3>
-            <button onclick="toggleChatbot()">Close</button>
+      );
+    } else if (query.includes('acc') || query.includes('injury')) {
+      return (
+        <div>
+          <p className="font-bold">ACC Injury Definition:</p>
+          <p>{accDefinition}</p>
         </div>
-        <iframe src="chatbot.html" width="100%" height="460" frameborder="0"></iframe>
-    </div>
+      );
+    } else {
+      return (
+        <div>
+          <p>I'm sorry, I don't have specific information about that query. Here are some options that might help:</p>
+          <ul className="list-disc pl-5 mt-2">
+            <li>Ask about a specific clinic (e.g., "Pakuranga clinic")</li>
+            <li>Ask about locations, prices, booking, or hours</li>
+            <li>Inquire about our cancellation policy</li>
+            <li>Ask about ACC injuries</li>
+            <li>Visit our website for more detailed information</li>
+            <li>Contact us directly for personalized assistance</li>
+          </ul>
+          <Button 
+            variant="outline" 
+            className="mt-3"
+            onClick={() => window.open('mailto:support@totalbodyphysio.com', '_blank')}
+          >
+            <HelpCircle className="mr-2 h-4 w-4" /> Contact Support
+          </Button>
+        </div>
+      );
+    }
+  };
 
-    <script>
-        function toggleService(id) {
-            var details = document.getElementById(id);
-            if (details.style.display === "block") {
-                details.style.display = "none";
-            } else {
-                details.style.display = "block";
-            }
-        }
+  return (
+    <Card className="w-96">
+      <CardHeader>
+        <CardTitle>Total Body Physio Chat</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <div className="h-96 overflow-y-auto mb-4">
+          {messages.map((msg, index) => (
+            <div key={index} className={`mb-2 ${msg.sender === 'user' ? 'text-right' : 'text-left'}`}>
+              <span className={`inline-block p-2 rounded-lg ${msg.sender === 'user' ? 'bg-blue-500 text-white' : 'bg-gray-200'}`}>
+                {msg.text}
+              </span>
+            </div>
+          ))}
+        </div>
+        <div className="flex">
+          <Input
+            type="text"
+            value={inputValue}
+            onChange={handleInputChange}
+            onKeyPress={handleKeyPress}
+            placeholder="Type your message..."
+            className="flex-grow mr-2"
+          />
+          <Button onClick={handleSend}>
+            <Send className="h-4 w-4" />
+          </Button>
+        </div>
+      </CardContent>
+    </Card>
+  );
+};
 
-        function toggleChatbot() {
-            var chatbot = document.getElementById("chatbot");
-            if (chatbot.style.display === "block") {
-                chatbot.style.display = "none";
-            } else {
-                chatbot.style.display = "block";
-            }
-        }
-
-        // ... (FAQ toggle script remains the same) ...
-    </script>
-</body>
-</html>
+export default Chatbot;
