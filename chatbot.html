@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Total Body Physio</title>
+    <style>
+        /* ... (previous styles remain) ... */
+        
+        .service-details {
+            display: none;
+            background-color: #ffffff;
+            padding: 1rem;
+            border-radius: 0 0 10px 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .chatbot-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 350px;
+            height: 500px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+            display: none;
+        }
+        
+        .chatbot-header {
+            background-color: #036F39;
+            color: #fff;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .chatbot-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #036F39;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* ... (rest of the styles remain) ... */
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <img src="832A3692-4798-48A1-A179-8AFF3B819C10.pdf.png" alt="Total Body Physio Logo" class="logo">
+            <nav>
+                <ul>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#locations">Locations</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Expert Physiotherapy for Total Body Wellness</h1>
+            <p>Personalised care to help you move, feel, and live better</p>
+            <a href="https://total-body-physio.au1.cliniko.com/bookings" class="button" target="_blank">Book an Appointment</a>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="services-grid">
+                <div class="service">
+                    <h3>Sports Injury Rehabilitation</h3>
+                    <p>Specialised treatment to address your specific needs and goals.</p>
+                    <button class="button" onclick="toggleService('sports-injury')">Learn More</button>
+                    <div id="sports-injury" class="service-details">
+                        <p>Our sports injury rehabilitation program is designed to help athletes of all levels recover from injuries and return to peak performance. We use a combination of targeted exercises, manual therapy, and cutting-edge techniques to address the specific demands of your sport and your body.</p>
+                        <ul>
+                            <li>Comprehensive injury assessment</li>
+                            <li>Customized rehabilitation plans</li>
+                            <li>Sport-specific training and conditioning</li>
+                            <li>Injury prevention strategies</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="service">
+                    <h3>Manual Therapy</h3>
+                    <p>Hands-on techniques to improve mobility and reduce pain.</p>
+                    <button class="button" onclick="toggleService('manual-therapy')">Learn More</button>
+                    <div id="manual-therapy" class="service-details">
+                        <p>Our manual therapy services provide hands-on treatment to manipulate and mobilize your joints and soft tissues. This approach can significantly improve your mobility, reduce pain, and enhance your overall physical function.</p>
+                        <ul>
+                            <li>Joint mobilization and manipulation</li>
+                            <li>Soft tissue massage and release techniques</li>
+                            <li>Myofascial release</li>
+                            <li>Trigger point therapy</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="service">
+                    <h3>Postural Correction</h3>
+                    <p>Customized programs to improve your posture and prevent injuries.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="locations" class="locations">
+        <div class="container">
+            <h2>Our Locations</h2>
+            <div class="locations-grid">
+                <div class="location">
+                    <h3>Pakuranga</h3>
+                    <p>1 Sir Lloyd Drive, Pakuranga Heights, Auckland</p>
+                    <p>Phone: 09 535 1932</p>
+                    <a href="pakuranga.html" class="button">Learn More</a>
+                </div>
+                <div class="location">
+                    <h3>Titirangi</h3>
+                    <p>2 Rangiwai Rd, Titirangi 0604</p>
+                    <p>Phone: 09 817 7377</p>
+                    <a href="titirangi.html" class="button">Learn More</a>
+                </div>
+                <div class="location">
+                    <h3>Flat Bush</h3>
+                    <p>14 Fusion Rd, Flat Bush, Auckland</p>
+                    <p>Phone: 09 265 2323</p>
+                    <a href="flatbush.html" class="button">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ... (About and FAQ sections remain the same) ... -->
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Total Body Physio. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <button class="chatbot-toggle" onclick="toggleChatbot()">Chat with us</button>
+
+    <div class="chatbot-container" id="chatbot">
+        <div class="chatbot-header">
+            <h3>Total Body Physio Chat</h3>
+            <button onclick="toggleChatbot()">Close</button>
+        </div>
+        <iframe src="chatbot.html" width="100%" height="460" frameborder="0"></iframe>
+    </div>
+
+    <script>
+        function toggleService(id) {
+            var details = document.getElementById(id);
+            if (details.style.display === "block") {
+                details.style.display = "none";
+            } else {
+                details.style.display = "block";
+            }
+        }
+
+        function toggleChatbot() {
+            var chatbot = document.getElementById("chatbot");
+            if (chatbot.style.display === "block") {
+                chatbot.style.display = "none";
+            } else {
+                chatbot.style.display = "block";
+            }
+        }
+
+        // ... (FAQ toggle script remains the same) ...
+    </script>
+</body>
+</html>
