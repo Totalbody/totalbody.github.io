@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Total Body Physio - Pakuranga Clinic</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* Add your styles here */
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto', Arial, sans-serif;
             line-height: 1.6;
             color: #333;
+            margin: 0;
+            padding: 0;
         }
         .container {
             width: 80%;
@@ -29,41 +31,137 @@
             text-transform: uppercase;
             font-size: 16px;
         }
-        .clinic-info {
-            display: flex;
-            justify-content: space-between;
+        header ul {
+            padding: 0;
+            list-style: none;
+        }
+        header li {
+            display: inline;
+            padding: 0 20px;
+        }
+        header #branding {
+            float: left;
+        }
+        header #branding h1 {
+            margin: 0;
+        }
+        header nav {
+            float: right;
+            margin-top: 10px;
+        }
+        h1, h2, h3 {
+            font-family: 'Montserrat', sans-serif;
+        }
+        .highlight, header .current a {
+            color: #8DC63F;
+            font-weight: bold;
+        }
+        #showcase {
+            min-height: 400px;
+            background: url('clinic-image.jpg') no-repeat center;
+            background-size: cover;
+            text-align: center;
+            color: #ffffff;
+        }
+        #showcase h1 {
+            margin-top: 100px;
+            font-size: 55px;
+            margin-bottom: 10px;
+        }
+        #showcase p {
+            font-size: 20px;
+        }
+        #about, #services, #team, #booking {
+            padding: 15px;
+            background: #f4f4f4;
             margin-top: 20px;
         }
-        .clinic-details, .clinic-image {
-            flex: 1;
+        #about .info {
+            display: flex;
+            justify-content: space-between;
         }
-        .clinic-image img {
-            max-width: 100%;
-            height: auto;
+        #about .info div {
+            flex: 1;
+            padding: 10px;
+        }
+        #services ul, #team ul {
+            list-style: none;
+            padding: 0;
+        }
+        #services li, #team li {
+            padding: 5px 0;
+        }
+        .button {
+            display: inline-block;
+            background: #036F39;
+            color: #ffffff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
     <header>
         <div class="container">
-            <h1>Total Body Physio - Pakuranga Clinic</h1>
+            <div id="branding">
+                <h1><span class="highlight">Total Body Physio</span> Pakuranga</h1>
+            </div>
             <nav>
                 <ul>
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="#about">About</a></li>
+                    <li class="current"><a href="#about">About</a></li>
                     <li><a href="#services">Services</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#team">Team</a></li>
+                    <li><a href="#booking">Booking</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <div class="container">
-        <section id="about">
+    <section id="showcase">
+        <div class="container">
+            <h1>Welcome to Total Body Physio Pakuranga</h1>
+            <p>Expert physiotherapy care in the heart of Pakuranga</p>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
             <h2>About Our Pakuranga Clinic</h2>
-            <div class="clinic-info">
-                <div class="clinic-details">
-                    <p>Our Pakuranga clinic, established in [YEAR], has been serving the local community with top-notch physiotherapy services. Located conveniently at 1 Sir Lloyd Drive, Pakuranga Heights, Auckland, we offer a wide range of treatments in a modern, well-equipped facility.</p>
+            <div class="info">
+                <div>
+                    <p>Our Pakuranga clinic, established in 2002, has been serving the local community with top-notch physiotherapy services. Located conveniently at 1 Sir Lloyd Drive, Pakuranga Heights, Auckland, we offer a wide range of treatments in a modern, well-equipped facility.</p>
                     <h3>Contact Information:</h3>
                     <p>Phone: 09 535 1932</p>
                     <p>Email: pakuranga@totalbodyphysio.co.nz</p>
@@ -73,14 +171,20 @@
                     <p>Saturday: 8am - 1pm</p>
                     <p>Sunday: Closed</p>
                 </div>
-                <div class="clinic-image">
-                    <!-- Add your clinic image here -->
-                    <img src="pakuranga-clinic.jpg" alt="Pakuranga Clinic">
+                <div>
+                    <iframe
+                        width="100%"
+                        height="450"
+                        frameborder="0" style="border:0"
+                        src="https://www.google.com/maps/embed/v1/place?key=YOUR_API_KEY&q=Total+Body+Physio+Pakuranga,Auckland+NZ" allowfullscreen>
+                    </iframe>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="services">
+    <section id="services">
+        <div class="container">
             <h2>Our Services</h2>
             <ul>
                 <li>Sports Injury Rehabilitation</li>
@@ -89,30 +193,124 @@
                 <li>Acupuncture/Dry Needling</li>
                 <li>Careway Pathway (ACC-funded program)</li>
             </ul>
-        </section>
+        </div>
+    </section>
 
-        <section id="team">
+    <section id="team">
+        <div class="container">
             <h2>Our Team</h2>
-            <!-- Add links to individual physiotherapist pages here -->
             <ul>
-                <li><a href="timothy-keung.html">Timothy Keung</a></li>
-                <li><a href="dylan-connolly.html">Dylan Connolly</a></li>
-                <li><a href="alistair-burgess.html">Alistair Burgess</a></li>
-                <!-- Add more physiotherapists as needed -->
+                <li><a href="#" onclick="openPractitionerModal('timothy-keung')">Timothy Keung</a></li>
+                <li><a href="#" onclick="openPractitionerModal('dylan-connolly')">Dylan Connolly</a></li>
+                <li><a href="#" onclick="openPractitionerModal('alistair-burgess')">Alistair Burgess</a></li>
+                <li><a href="#" onclick="openPractitionerModal('jen-hong')">Jen Hong</a></li>
             </ul>
-        </section>
+        </div>
+    </section>
 
-        <section id="booking">
+    <section id="booking">
+        <div class="container">
             <h2>Book an Appointment</h2>
             <p>Ready to start your journey to better health? Book an appointment with us today!</p>
             <a href="https://total-body-physio.au1.cliniko.com/bookings?business_id=90633" target="_blank" class="button">Book Now</a>
-        </section>
-    </div>
+        </div>
+    </section>
 
     <footer>
-        <div class="container">
-            <p>&copy; 2023 Total Body Physio. All rights reserved.</p>
-        </div>
+        <p>&copy; 2023 Total Body Physio. All rights reserved.</p>
     </footer>
+
+    <div id="practitionerModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="practitionerDetails"></div>
+            <div id="practitionerBooking"></div>
+        </div>
+    </div>
+
+    <script>
+        function openPractitionerModal(practitionerId) {
+            var modal = document.getElementById("practitionerModal");
+            var details = document.getElementById("practitionerDetails");
+            var booking = document.getElementById("practitionerBooking");
+
+            // Set practitioner details based on ID
+            if (practitionerId === 'timothy-keung') {
+                details.innerHTML = `
+                    <h2>Timothy Keung</h2>
+                    <p>Timothy is a dedicated and enthusiastic physiotherapist who has been with Total Body Physio for over a year. Fluent in Mandarin, Cantonese, and English, Timothy is able to provide care to a diverse range of patients across our Auckland locations.</p>
+                    <h3>Specialties:</h3>
+                    <ul>
+                        <li>Sports Rehabilitation</li>
+                        <li>Manual Therapy</li>
+                        <li>Acupuncture (in training)</li>
+                    </ul>
+                `;
+                booking.innerHTML = `
+                    <iframe id='cliniko-63898223' src='https://total-body-physio.au1.cliniko.com/bookings?business_id=90633&practitioner_id=172332&embedded=true' frameborder='0' scrolling='auto' width='100%' height='1000'></iframe>
+                `;
+            } else if (practitionerId === 'dylan-connolly') {
+                details.innerHTML = `
+                    <h2>Dylan Connolly</h2>
+                    <p>Dylan is a friendly and motivated physiotherapist, originally from Ireland. He has experience in sports physiotherapy, particularly in football, and plays at a high level in New Zealand.</p>
+                    <h3>Specialties:</h3>
+                    <ul>
+                        <li>Sports Injuries</li>
+                        <li>Lower Back Pain</li>
+                        <li>Shoulder Pain</li>
+                        <li>Post-operative Rehab</li>
+                    </ul>
+                `;
+                booking.innerHTML = `
+                    <iframe id='cliniko-63898223' src='https://total-body-physio.au1.cliniko.com/bookings?business_id=90633&practitioner_id=1243762082222966342&embedded=true' frameborder='0' scrolling='auto' width='100%' height='1000'></iframe>
+                `;
+            } else if (practitionerId === 'alistair-burgess') {
+                details.innerHTML = `
+                    <h2>Alistair Burgess</h2>
+                    <p>Alistair is an experienced physiotherapist with over 8 years in private practice. He has a comprehensive understanding of clinical assessment and treatment, specializing in Strength Training, Movement Assessment, and Shoulder and Core Rehabilitation.</p>
+                    <h3>Specialties:</h3>
+                    <ul>
+                        <li>Strength Training</li>
+                        <li>Movement Assessment</li>
+                        <li>Shoulder Rehabilitation</li>
+                        <li>Core Rehabilitation</li>
+                    </ul>
+                `;
+                booking.innerHTML = `
+                    <iframe id='cliniko-63898223' src='https://total-body-physio.au1.cliniko.com/bookings?business_id=90633&practitioner_id=1274037115297990613&embedded=true' frameborder='0' scrolling='auto' width='100%' height='1000'></iframe>
+                `;
+            } else if (practitionerId === 'jen-hong') {
+                details.innerHTML = `
+                    <h2>Jen Hong</h2>
+                    <p>Jen Hong is an experienced physiotherapist with over 5 years of experience since graduating from the University of Otago. She is fluent in Korean and specializes in treating various conditions, including concussion, lower back pain, and sports-related injuries.</p>
+                    <h3>Specialties:</h3>
+                    <ul>
+                        <li>Concussion Management</li>
+                        <li>Lower Back Pain</li>
+                        <li>Sports Injuries</li>
+                        <li>Acupuncture</li>
+                    </ul>
+                `;
+                booking.innerHTML = `
+                    <iframe id='cliniko-63898223' src='https://total-body-physio.au1.cliniko.com/bookings?business_id=90633&practitioner_id=151553&embedded=true' frameborder='0' scrolling='auto' width='100%' height='1000'></iframe>
+                `;
+            }
+
+            modal.style.display = "block";
+        }
+
+        // Close modal when clicking on <span> (x)
+        document.getElementsByClassName("close")[0].onclick = function() {
+            document.getElementById("practitionerModal").style.display = "none";
+        }
+
+        // Close modal when clicking outside of it
+        window.onclick = function(event) {
+            var modal = document.getElementById("practitionerModal");
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
 </body>
 </html>
