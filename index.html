@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Total Body Physio</title>
+    <title>Total Body Physio - Empowering Movement, Enhancing Lives</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -30,14 +30,12 @@
         .logo {
             max-width: 200px;
             height: auto;
-            width: 100%;
         }
         nav ul {
             list-style-type: none;
             padding: 0;
             display: flex;
             gap: 20px;
-            margin: 0;
         }
         nav ul li a {
             text-decoration: none;
@@ -71,12 +69,14 @@
             z-index: 1;
         }
         .hero h1 {
-            font-size: 2.5rem;
+            font-size: 3rem;
             margin-bottom: 1rem;
+            font-style: italic;
         }
         .hero p {
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             margin-bottom: 2rem;
+            font-style: italic;
         }
         .button {
             background-color: #036F39;
@@ -91,9 +91,8 @@
         .button:hover {
             background-color: #025a2f;
         }
-        .services, .locations, .faq, .about {
+        .services, .locations, .about, .faq {
             padding: 4rem 0;
-            text-align: center;
         }
         .services-grid, .locations-grid {
             display: grid;
@@ -106,10 +105,6 @@
             padding: 2rem;
             border-radius: 10px;
             transition: transform 0.3s ease;
-            text-align: left;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
         }
         .service:hover, .location:hover {
             transform: translateY(-5px);
@@ -118,76 +113,61 @@
             font-size: 3rem;
             margin-bottom: 1rem;
         }
-        .service-details {
+        .service-details-overlay {
             display: none;
-            margin-top: 1rem;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
         }
-        .service .button {
-            margin-top: auto;
-            align-self: flex-start;
+        .service-details-content {
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 10px;
+            width: 50%;
+            max-height: 80%;
+            overflow-y: auto;
+        }
+        .close-button {
+            float: right;
+            font-size: 1.5rem;
+            cursor: pointer;
         }
         .faq-item {
             margin-bottom: 1rem;
-            text-align: left;
         }
         .faq-question {
             background-color: #f4f4f4;
             padding: 1rem;
             cursor: pointer;
             font-weight: bold;
+            border-radius: 5px;
+            margin-bottom: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .faq-question:hover {
+            background-color: #e0e0e0;
         }
         .faq-answer {
             padding: 1rem;
             display: none;
+            background-color: #ffffff;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .faq-answer.show {
+            display: block;
         }
         footer {
             background-color: #036F39;
             color: #fff;
             text-align: center;
             padding: 1rem 0;
-        }
-        .chatbot-container {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 300px;
-            height: 400px;
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            overflow: hidden;
-            display: none;
-        }
-        .chatbot-header {
-            background-color: #036F39;
-            color: #fff;
-            padding: 10px;
-            font-weight: bold;
-        }
-        .chatbot-messages {
-            height: 310px;
-            overflow-y: auto;
-            padding: 10px;
-        }
-        .chatbot-input {
-            display: flex;
-            padding: 10px;
-        }
-        .chatbot-input input {
-            flex-grow: 1;
-            margin-right: 10px;
-            padding: 5px;
-        }
-        .chatbot-toggle {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #036F39;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
         }
         @media (max-width: 768px) {
             .header-content {
@@ -200,6 +180,9 @@
             }
             .logo {
                 max-width: 150px;
+            }
+            .service-details-content {
+                width: 90%;
             }
         }
     </style>
@@ -223,8 +206,8 @@
 
     <section class="hero">
         <div class="container hero-content">
-            <h1>Expert Physiotherapy for Total Body Wellness</h1>
-            <p>Personalised care to help you move, feel, and live better</p>
+            <h1>Empowering Movement, Enhancing Lives</h1>
+            <p>Your journey to peak performance starts here</p>
             <a href="https://total-body-physio.au1.cliniko.com/bookings" class="button" target="_blank">Book an Appointment</a>
         </div>
     </section>
@@ -237,50 +220,43 @@
                     <i class="fas fa-running service-icon"></i>
                     <h3>Sports Injury Rehabilitation</h3>
                     <p>Specialised treatment to address your specific needs and goals.</p>
-                    <button class="button" onclick="toggleService('sports-rehab')">Learn More</button>
-                    <div id="sports-rehab" class="service-details">
-                        <p>Our sports injury rehabilitation program helps athletes of all levels recover and return to peak performance. We use targeted exercises, manual therapy, and cutting-edge techniques tailored to your sport and body.</p>
-                    </div>
+                    <button class="button" onclick="showServiceDetails('sports-rehab')">Learn More</button>
                 </div>
                 <div class="service">
                     <i class="fas fa-hands service-icon"></i>
                     <h3>Manual Therapy</h3>
                     <p>Hands-on techniques to improve mobility and reduce pain.</p>
-                    <button class="button" onclick="toggleService('manual-therapy')">Learn More</button>
-                    <div id="manual-therapy" class="service-details">
-                        <p>Our manual therapy services include joint mobilisation, soft tissue massage, and myofascial release to enhance physical function and alleviate pain.</p>
-                    </div>
+                    <button class="button" onclick="showServiceDetails('manual-therapy')">Learn More</button>
                 </div>
                 <div class="service">
                     <i class="fas fa-user service-icon"></i>
                     <h3>Postural Correction</h3>
                     <p>Customised programs to improve your posture and prevent injuries.</p>
-                    <button class="button" onclick="toggleService('postural-correction')">Learn More</button>
-                    <div id="postural-correction" class="service-details">
-                        <p>We assess your posture and develop tailored exercise programs to correct imbalances, reduce pain, and improve overall body alignment.</p>
-                    </div>
+                    <button class="button" onclick="showServiceDetails('postural-correction')">Learn More</button>
                 </div>
                 <div class="service">
                     <i class="fas fa-road service-icon"></i>
                     <h3>Careway Pathway</h3>
                     <p>ACC-funded program for specific injuries.</p>
-                    <button class="button" onclick="toggleService('careway')">Learn More</button>
-                    <div id="careway" class="service-details">
-                        <p>Careway is a fully funded ACC program providing surgical or non-surgical pathways for specific injuries such as shoulder tears, dislocations, and knee injuries (ACL and dislocations). Our expert team guides you through your recovery journey.</p>
-                    </div>
+                    <button class="button" onclick="showServiceDetails('careway')">Learn More</button>
                 </div>
                 <div class="service">
                     <i class="fas fa-user-md service-icon"></i>
                     <h3>Acupuncture/Dry Needling</h3>
                     <p>Effective techniques to alleviate pain and promote healing.</p>
-                    <button class="button" onclick="toggleService('acupuncture')">Learn More</button>
-                    <div id="acupuncture" class="service-details">
-                        <p>Our trained physiotherapists use acupuncture and dry needling to target specific points in the body, helping to relieve pain, improve circulation, and promote natural healing processes.</p>
-                    </div>
+                    <button class="button" onclick="showServiceDetails('acupuncture')">Learn More</button>
                 </div>
             </div>
         </div>
     </section>
+
+    <div id="service-details-overlay" class="service-details-overlay">
+        <div class="service-details-content">
+            <span class="close-button" onclick="closeServiceDetails()">&times;</span>
+            <h2 id="service-details-title"></h2>
+            <div id="service-details-text"></div>
+        </div>
+    </div>
 
     <section id="locations" class="locations">
         <div class="container">
@@ -324,21 +300,36 @@
             <h2>Frequently Asked Questions</h2>
             <div class="faq-item">
                 <div class="faq-question">What should I expect during my first visit?</div>
-                <div class="faq-answer">During your first visit, we'll conduct a thorough assessment of your condition, discuss your medical history, and develop a personalised treatment plan.</div>
+                <div class="faq-answer">During your first visit, our expert physiotherapist will conduct a comprehensive assessment. This includes discussing your medical history, current symptoms, and goals. We'll perform a physical examination to evaluate your condition. Based on this assessment, we'll develop a personalised treatment plan tailored to your specific needs and explain the proposed course of action.</div>
             </div>
             <div class="faq-item">
                 <div class="faq-question">Do I need a referral to see a physiotherapist?</div>
-                <div class="faq-answer">No, you don't need a referral to see a physiotherapist. However, if you're claiming through ACC, you may need a referral from your doctor.</div>
+                <div class="faq-answer">In New Zealand, you generally don't need a referral to see a physiotherapist for private treatment. You can book an appointment directly with us. However, if you're seeking treatment for an ACC-covered injury, you may need a referral from your GP or specialist. If you're unsure, give us a call, and we'll be happy to guide you through the process.</div>
             </div>
             <div class="faq-item">
                 <div class="faq-question">What should I wear to my appointment?</div>
-                <div class="faq-answer">Wear comfortable, loose-fitting clothing that allows easy access to the area being treated. For lower body issues, shorts are recommended.</div>
+                <div class="faq-answer">We recommend wearing comfortable, loose-fitting clothing that allows easy access to the area being treated. For lower body issues, shorts or loose trousers are ideal. For upper body concerns, a tank top or loose shirt works well. If you're coming directly from work, don't worry - we can provide gowns or shorts if needed.</div>
             </div>
             <div class="faq-item">
                 <div class="faq-question">How long does a typical physiotherapy session last?</div>
-                <div class="faq-answer">A typical session lasts about 30-60 minutes, depending on the treatment required.</div>
+                <div class="faq-answer">A typical physiotherapy session at Total Body Physio lasts between 30 to 60 minutes. Initial consultations may be longer, usually around 45-60 minutes, to allow for a thorough assessment. Follow-up sessions are generally 30-45 minutes. The exact duration can vary based on your specific condition and treatment needs.</div>
             </div>
             <div class="faq-item">
                 <div class="faq-question">Is physiotherapy covered by ACC?</div>
-                <div class="faq-answer">Yes, ACC covers physiotherapy for accident-related injuries. You may need to pay a surcharge for each visit.</div>
+                <div class="faq-answer">Yes, ACC covers physiotherapy for accident-related injuries in New Zealand. If your injury is ACC-approved, a significant portion of your treatment cost will be covered. You may need to pay a small surcharge for each visit, which varies depending on your specific case. We can assist you with the ACC claim process and provide more details about any associated costs during your initial consultation.</div>
             </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Total Body Physio. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ Toggle
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                answer.classList.toggle('show');
