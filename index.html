@@ -47,26 +47,10 @@
             color: #8DC63F;
         }
         .hero {
-            background-image: url('https://via.placeholder.com/1500x600.png?text=Physiotherapy+Treatment');
-            background-size: cover;
-            background-position: center;
+            background-color: #8DC63F;
             color: #fff;
             text-align: center;
             padding: 6rem 0;
-            position: relative;
-        }
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0,0,0,0.5);
-        }
-        .hero-content {
-            position: relative;
-            z-index: 1;
         }
         .hero h1 {
             font-size: 3rem;
@@ -105,6 +89,9 @@
             padding: 2rem;
             border-radius: 10px;
             transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
         .service:hover, .location:hover {
             transform: translateY(-5px);
@@ -112,6 +99,10 @@
         .service-icon {
             font-size: 3rem;
             margin-bottom: 1rem;
+        }
+        .service .button, .location .button {
+            margin-top: auto;
+            align-self: flex-start;
         }
         .service-details-overlay {
             display: none;
@@ -129,8 +120,8 @@
             background-color: #fff;
             padding: 2rem;
             border-radius: 10px;
-            width: 50%;
-            max-height: 80%;
+            width: 80%;
+            height: 60%;
             overflow-y: auto;
         }
         .close-button {
@@ -160,9 +151,6 @@
             border-radius: 5px;
             margin-bottom: 10px;
         }
-        .faq-answer.show {
-            display: block;
-        }
         footer {
             background-color: #036F39;
             color: #fff;
@@ -180,9 +168,6 @@
             }
             .logo {
                 max-width: 150px;
-            }
-            .service-details-content {
-                width: 90%;
             }
         }
     </style>
@@ -270,7 +255,7 @@
                 </div>
                 <div class="location">
                     <h3>Titirangi</h3>
-                    <p>2 Rangiwai Rd, Titirangi 0604</p>
+                    <p>2 Rangiwai Rd, Titirangi, Auckland</p>
                     <p>Phone: 09 817 7377</p>
                     <a href="titirangi.html" class="button">Learn More</a>
                 </div>
@@ -318,18 +303,13 @@
                 <div class="faq-question">Is physiotherapy covered by ACC?</div>
                 <div class="faq-answer">Yes, ACC covers physiotherapy for accident-related injuries in New Zealand. If your injury is ACC-approved, a significant portion of your treatment cost will be covered. You may need to pay a small surcharge for each visit, which varies depending on your specific case. We can assist you with the ACC claim process and provide more details about any associated costs during your initial consultation.</div>
             </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 Total Body Physio. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <script>
-        // FAQ Toggle
-        document.querySelectorAll('.faq-question').forEach(question => {
-            question.addEventListener('click', () => {
-                const answer = question.nextElementSibling;
-                answer.classList.toggle('show');
+            <div class="faq-item">
+                <div class="faq-question">What is your cancellation policy?</div>
+                <div class="faq-answer">We understand that circumstances can change. We kindly request that you provide at least 24 hours' notice if you need to cancel or reschedule your appointment. This allows us to offer the slot to another patient who may be waiting. Late cancellations (less than 24 hours' notice) or no-shows may incur a fee. If you're unable to attend due to illness or emergency, please let us know as soon as possible.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">How do I book an appointment?</div>
+                <div class="faq-answer">
+                    Booking an appointment with Total Body Physio is easy! You have several options:
+                    <ul>
+                        <li>Online: Visit our <a href="https://total-body-physio.au
