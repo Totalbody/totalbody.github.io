@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Total Body Physio - Titirangi Clinic</title>
+    <style>
+        /* Add your styles here (same as Pakuranga page) */
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Total Body Physio - Titirangi Clinic</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <section id="about">
+            <h2>About Our Titirangi Clinic</h2>
+            <div class="clinic-info">
+                <div class="clinic-details">
+                    <p>Our Titirangi clinic, established in [YEAR], has been providing exceptional physiotherapy services to the Titirangi community and surrounding areas. Located at 2 Rangiwai Rd, Titirangi, Auckland, our clinic offers a serene environment for your treatment and recovery.</p>
+                    <h3>Contact Information:</h3>
+                    <p>Phone: 09 817 7377</p>
+                    <p>Email: titirangi@totalbodyphysio.co.nz</p>
+                    <p>Address: 2 Rangiwai Rd, Titirangi, Auckland</p>
+                    <h3>Opening Hours:</h3>
+                    <p>Monday - Friday: 7am - 7pm</p>
+                    <p>Saturday: 8am - 1pm</p>
+                    <p>Sunday: Closed</p>
+                </div>
+                <div class="clinic-image">
+                    <!-- Add your clinic image here -->
+                    <img src="titirangi-clinic.jpg" alt="Titirangi Clinic">
+                </div>
+            </div>
+        </section>
+
+        <section id="services">
+            <h2>Our Services</h2>
+            <ul>
+                <li>Sports Injury Rehabilitation</li>
+                <li>Manual Therapy</li>
+                <li>Postural Correction</li>
+                <li>Acupuncture/Dry Needling</li>
+                <li>Careway Pathway (ACC-funded program)</li>
+            </ul>
+        </section>
+
+        <section id="team">
+            <h2>Our Team</h2>
+            <!-- Add links to individual physiotherapist pages here -->
+            <ul>
+                <li><a href="jade-warren.html">Jade Warren</a></li>
+                <li><a href="hans-vermeulen.html">Hans Vermeulen</a></li>
+                <li><a href="maria-alonso.html">María Alonso</a></li>
+                <!-- Add more physiotherapists as needed -->
+            </ul>
+        </section>
+
+        <section id="booking">
+            <h2>Book an Appointment</h2>
+            <p>Ready to start your journey to better health? Book an appointment with us today!</p>
+            <a href="https://total-body-physio.au1.cliniko.com/bookings?business_id=90865" target="_blank" class="button">Book Now</a>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Total Body Physio. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
