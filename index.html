@@ -3,197 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Total Body Physio - Empowering Movement, Enhancing Lives</title>
+    <title>Total Body Physio</title>
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            color: #036F39;
-            line-height: 1.6;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        header {
-            background-color: #fff;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            padding: 1rem 0;
-        }
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .logo {
-            max-width: 200px;
-            height: auto;
-        }
-        nav ul {
-            list-style-type: none;
-            padding: 0;
-            display: flex;
-            gap: 20px;
-        }
-        nav ul li a {
-            text-decoration: none;
-            color: #036F39;
-            font-weight: bold;
-            transition: color 0.3s ease;
-        }
-        nav ul li a:hover {
-            color: #8DC63F;
-        }
-        .hero {
-            background-color: #8DC63F;
-            color: #fff;
-            text-align: center;
-            padding: 6rem 0;
-        }
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            font-style: italic;
-        }
-        .hero p {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            font-style: italic;
-        }
-        .button {
-            background-color: #036F39;
-            color: #fff;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 5px;
-            display: inline-block;
-            font-weight: bold;
-            transition: background-color 0.3s ease;
-        }
-        .button:hover {
-            background-color: #025a2f;
-        }
-        .services, .locations, .about, .faq {
-            padding: 4rem 0;
-        }
-        .services-grid, .locations-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-        .service, .location {
-            background-color: #f4f4f4;
-            padding: 2rem;
-            border-radius: 10px;
-            transition: transform 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-        }
-        .service:hover, .location:hover {
-            transform: translateY(-5px);
-        }
-        .service-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-        .service .button, .location .button {
-            margin-top: auto;
-            align-self: flex-start;
-        }
-        .service-details-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.8);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-        }
-        .service-details-content {
-            background-color: #fff;
-            padding: 2rem;
-            border-radius: 10px;
-            width: 80%;
-            height: 60%;
-            overflow-y: auto;
-        }
-        .close-button {
-            float: right;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-        .faq-item {
-            margin-bottom: 1rem;
-        }
-        .faq-question {
-            background-color: #f4f4f4;
-            padding: 1rem;
-            cursor: pointer;
-            font-weight: bold;
-            border-radius: 5px;
-            margin-bottom: 5px;
-            transition: background-color 0.3s ease;
-        }
-        .faq-question:hover {
-            background-color: #e0e0e0;
-        }
-        .faq-answer {
-            padding: 1rem;
-            display: none;
-            background-color: #ffffff;
-            border-radius: 5px;
-            margin-bottom: 10px;
-        }
-        footer {
-            background-color: #036F39;
-            color: #fff;
-            text-align: center;
-            padding: 1rem 0;
-        }
-        @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            nav ul {
-                flex-direction: column;
-                align-items: center;
-            }
-            .logo {
-                max-width: 150px;
-            }
-        }
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; color: #036F39; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        header { background-color: #fff; padding: 1rem 0; }
+        .header-content { display: flex; justify-content: space-between; align-items: center; }
+        .logo { max-width: 200px; height: auto; }
+        nav ul { list-style-type: none; padding: 0; display: flex; gap: 20px; }
+        nav ul li a { text-decoration: none; color: #036F39; }
+        .hero { background-color: #8DC63F; color: #fff; text-align: center; padding: 4rem 0; }
+        .services, .locations, .about, .faq { padding: 2rem 0; }
+        .services-grid, .locations-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; }
+        .service, .location { background-color: #f4f4f4; padding: 1rem; border-radius: 5px; }
+        .faq-item { margin-bottom: 1rem; }
+        .faq-question { background-color: #f4f4f4; padding: 1rem; cursor: pointer; }
+        .faq-answer { display: none; padding: 1rem; }
+        footer { background-color: #036F39; color: #fff; text-align: center; padding: 1rem 0; }
     </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
     <header>
         <div class="container header-content">
-            <img src="832A3692-4798-48A1-A179-8AFF3B819C10.pdf.png" alt="Total Body Physio Logo" class="logo">
+            <img src="logo-placeholder.png" alt="Total Body Physio Logo" class="logo">
             <nav>
                 <ul>
                     <li><a href="#services">Services</a></li>
                     <li><a href="#locations">Locations</a></li>
                     <li><a href="#about">About Us</a></li>
                     <li><a href="#faq">FAQ</a></li>
-                    <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
     <section class="hero">
-        <div class="container hero-content">
+        <div class="container">
             <h1>Empowering Movement, Enhancing Lives</h1>
             <p>Your journey to peak performance starts here</p>
-            <a href="https://total-body-physio.au1.cliniko.com/bookings" class="button" target="_blank">Book an Appointment</a>
         </div>
     </section>
 
@@ -202,46 +49,17 @@
             <h2>Our Services</h2>
             <div class="services-grid">
                 <div class="service">
-                    <i class="fas fa-running service-icon"></i>
                     <h3>Sports Injury Rehabilitation</h3>
-                    <p>Specialised treatment to address your specific needs and goals.</p>
-                    <button class="button" onclick="showServiceDetails('sports-rehab')">Learn More</button>
+                    <p>Specialized treatment for athletes</p>
                 </div>
                 <div class="service">
-                    <i class="fas fa-hands service-icon"></i>
                     <h3>Manual Therapy</h3>
-                    <p>Hands-on techniques to improve mobility and reduce pain.</p>
-                    <button class="button" onclick="showServiceDetails('manual-therapy')">Learn More</button>
+                    <p>Hands-on techniques for pain relief</p>
                 </div>
-                <div class="service">
-                    <i class="fas fa-user service-icon"></i>
-                    <h3>Postural Correction</h3>
-                    <p>Customised programs to improve your posture and prevent injuries.</p>
-                    <button class="button" onclick="showServiceDetails('postural-correction')">Learn More</button>
-                </div>
-                <div class="service">
-                    <i class="fas fa-road service-icon"></i>
-                    <h3>Careway Pathway</h3>
-                    <p>ACC-funded program for specific injuries.</p>
-                    <button class="button" onclick="showServiceDetails('careway')">Learn More</button>
-                </div>
-                <div class="service">
-                    <i class="fas fa-user-md service-icon"></i>
-                    <h3>Acupuncture/Dry Needling</h3>
-                    <p>Effective techniques to alleviate pain and promote healing.</p>
-                    <button class="button" onclick="showServiceDetails('acupuncture')">Learn More</button>
-                </div>
+                <!-- Add more services as needed -->
             </div>
         </div>
     </section>
-
-    <div id="service-details-overlay" class="service-details-overlay">
-        <div class="service-details-content">
-            <span class="close-button" onclick="closeServiceDetails()">&times;</span>
-            <h2 id="service-details-title"></h2>
-            <div id="service-details-text"></div>
-        </div>
-    </div>
 
     <section id="locations" class="locations">
         <div class="container">
@@ -251,19 +69,16 @@
                     <h3>Pakuranga</h3>
                     <p>1 Sir Lloyd Drive, Pakuranga Heights, Auckland</p>
                     <p>Phone: 09 535 1932</p>
-                    <a href="pakuranga.html" class="button">Learn More</a>
                 </div>
                 <div class="location">
                     <h3>Titirangi</h3>
                     <p>2 Rangiwai Rd, Titirangi, Auckland</p>
                     <p>Phone: 09 817 7377</p>
-                    <a href="titirangi.html" class="button">Learn More</a>
                 </div>
                 <div class="location">
                     <h3>Flat Bush</h3>
                     <p>14 Fusion Rd, Flat Bush, Auckland</p>
                     <p>Phone: 09 265 2323</p>
-                    <a href="flatbush.html" class="button">Learn More</a>
                 </div>
             </div>
         </div>
@@ -272,11 +87,7 @@
     <section id="about" class="about">
         <div class="container">
             <h2>About Total Body Physio</h2>
-            <p>Founded in 2000, Total Body Physio was born from a passion for helping people achieve their best physical health. Our journey began with a simple yet powerful goal: to provide exceptional physiotherapy care that truly makes a difference in people's lives.</p>
-            <p>Over the years, we've grown our practice not just in size, but in the depth and quality of care we offer. Our growth has always been driven by our desire to help more people, not simply to increase profits. We believe that by expanding our reach, we can positively impact more lives and contribute to the overall health and wellbeing of our community.</p>
-            <p>At Total Body Physio, we pride ourselves on our hands-on approach. We combine expert manual therapy with personalised exercise programs, always focusing on the individual needs of each patient. Our style is complemented by what we call our 'best practices' - a blend of evidence-based techniques and our collective experience that ensures the highest standard of care.</p>
-            <p>We're not just physiotherapists; we're partners in your health journey. Our team's personality shines through in every interaction, creating a warm, welcoming environment where healing and improvement flourish. We're committed to continual learning and improvement, always striving to bring the latest and most effective physiotherapy techniques to our practice.</p>
-            <p>Choose Total Body Physio for care that goes beyond treatment - we're here to educate, support, and empower you on your path to optimal physical health.</p>
+            <p>Founded in 2000, Total Body Physio provides exceptional physiotherapy care to help you achieve optimal health and wellness.</p>
         </div>
     </section>
 
@@ -285,31 +96,25 @@
             <h2>Frequently Asked Questions</h2>
             <div class="faq-item">
                 <div class="faq-question">What should I expect during my first visit?</div>
-                <div class="faq-answer">During your first visit, our expert physiotherapist will conduct a comprehensive assessment. This includes discussing your medical history, current symptoms, and goals. We'll perform a physical examination to evaluate your condition. Based on this assessment, we'll develop a personalised treatment plan tailored to your specific needs and explain the proposed course of action.</div>
+                <div class="faq-answer">During your first visit, we'll conduct a comprehensive assessment and develop a personalized treatment plan.</div>
             </div>
-            <div class="faq-item">
-                <div class="faq-question">Do I need a referral to see a physiotherapist?</div>
-                <div class="faq-answer">In New Zealand, you generally don't need a referral to see a physiotherapist for private treatment. You can book an appointment directly with us. However, if you're seeking treatment for an ACC-covered injury, you may need a referral from your GP or specialist. If you're unsure, give us a call, and we'll be happy to guide you through the process.</div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">What should I wear to my appointment?</div>
-                <div class="faq-answer">We recommend wearing comfortable, loose-fitting clothing that allows easy access to the area being treated. For lower body issues, shorts or loose trousers are ideal. For upper body concerns, a tank top or loose shirt works well. If you're coming directly from work, don't worry - we can provide gowns or shorts if needed.</div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">How long does a typical physiotherapy session last?</div>
-                <div class="faq-answer">A typical physiotherapy session at Total Body Physio lasts between 30 to 60 minutes. Initial consultations may be longer, usually around 45-60 minutes, to allow for a thorough assessment. Follow-up sessions are generally 30-45 minutes. The exact duration can vary based on your specific condition and treatment needs.</div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">Is physiotherapy covered by ACC?</div>
-                <div class="faq-answer">Yes, ACC covers physiotherapy for accident-related injuries in New Zealand. If your injury is ACC-approved, a significant portion of your treatment cost will be covered. You may need to pay a small surcharge for each visit, which varies depending on your specific case. We can assist you with the ACC claim process and provide more details about any associated costs during your initial consultation.</div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">What is your cancellation policy?</div>
-                <div class="faq-answer">We understand that circumstances can change. We kindly request that you provide at least 24 hours' notice if you need to cancel or reschedule your appointment. This allows us to offer the slot to another patient who may be waiting. Late cancellations (less than 24 hours' notice) or no-shows may incur a fee. If you're unable to attend due to illness or emergency, please let us know as soon as possible.</div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">How do I book an appointment?</div>
-                <div class="faq-answer">
-                    Booking an appointment with Total Body Physio is easy! You have several options:
-                    <ul>
-                        <li>Online: Visit our <a href="https://total-body-physio.au
+            <!-- Add more FAQ items as needed -->
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Total Body Physio. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                answer.style.display = answer.style.display === 'none' ? 'block' : 'none';
+            });
+        });
+    </script>
+</body>
+</html>
