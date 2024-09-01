@@ -3,114 +3,257 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Total Body Physio - Pakuranga Clinic</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <title>Total Body Physio - Expert Physiotherapy in Auckland</title>
     <style>
-        body {
-            font-family: 'Roboto', Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            margin: 0;
-            padding: 0;
+        /* ... (previous styles remain the same) ... */
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
         }
-        h1, h2, h3 {
-            font-family: 'Montserrat', sans-serif;
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+            border-radius: 10px;
         }
-        /* ... (rest of the styles remain the same) ... */
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+        }
+        .faq-answer {
+            display: none;
+            padding: 1rem;
+            background-color: #fff;
+        }
+        .faq-answer.active {
+            display: block;
+        }
     </style>
 </head>
 <body>
     <header>
-        <div class="container">
-            <div id="branding">
-                <h1><span class="highlight">Total Body Physio</span> Pakuranga</h1>
-            </div>
+        <div class="container header-content">
+            <img src="Total Body Physio Logo" alt="Total Body Physio Logo" class="logo">
             <nav>
                 <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li class="current"><a href="#about">About</a></li>
                     <li><a href="#services">Services</a></li>
-                    <li><a href="#team">Team</a></li>
-                    <li><a href="#booking">Booking</a></li>
+                    <li><a href="#locations">Locations</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#faq">FAQ</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <!-- ... (rest of the HTML remains the same) ... -->
+    <!-- ... (hero section remains the same) ... -->
+
+    <section id="services" class="services">
+        <div class="section-header">
+            <h2>Our Services</h2>
+        </div>
+        <div class="container">
+            <div class="services-grid">
+                <div class="service">
+                    <h3>Sports Injury Rehabilitation</h3>
+                    <p>Specialized treatment for athletes of all levels.</p>
+                    <button class="button" onclick="openModal('sports-rehab')">Learn More</button>
+                </div>
+                <div class="service">
+                    <h3>Manual Therapy</h3>
+                    <p>Hands-on techniques to improve mobility and reduce pain.</p>
+                    <button class="button" onclick="openModal('manual-therapy')">Learn More</button>
+                </div>
+                <div class="service">
+                    <h3>Postural Correction</h3>
+                    <p>Customized programs to improve your posture and prevent injuries.</p>
+                    <button class="button" onclick="openModal('postural-correction')">Learn More</button>
+                </div>
+                <div class="service">
+                    <h3>Careway Pathway</h3>
+                    <p>ACC-funded program for specific injuries.</p>
+                    <button class="button" onclick="openModal('careway')">Learn More</button>
+                </div>
+                <div class="service">
+                    <h3>Acupuncture/Dry Needling</h3>
+                    <p>Effective techniques to alleviate pain and promote healing.</p>
+                    <button class="button" onclick="openModal('acupuncture')">Learn More</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="serviceModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="modalTitle"></h2>
+            <p id="modalContent"></p>
+        </div>
+    </div>
+
+    <section id="locations" class="locations">
+        <div class="section-header">
+            <h2>Our Locations</h2>
+        </div>
+        <div class="container">
+            <div class="locations-grid">
+                <div class="location">
+                    <h3>Pakuranga</h3>
+                    <p><a href="https://www.google.com/maps/search/?api=1&query=Total+Body+Physio+Pakuranga,+1+Sir+Lloyd+Drive,+Pakuranga+Heights,+Auckland" target="_blank">1 Sir Lloyd Drive, Pakuranga Heights, Auckland</a></p>
+                    <p>Phone: 09 535 1932</p>
+                    <p>Hours: Mon-Fri 7am-7pm, Sat 8am-1pm</p>
+                    <a href="https://total-body-physio.au1.cliniko.com/bookings?business_id=90633" class="button" target="_blank">Book at Pakuranga</a>
+                </div>
+                <div class="location">
+                    <h3>Titirangi</h3>
+                    <p><a href="https://www.google.com/maps/search/?api=1&query=Total+Body+Physio+Titirangi,+2+Rangiwai+Rd,+Titirangi,+Auckland" target="_blank">2 Rangiwai Rd, Titirangi, Auckland</a></p>
+                    <p>Phone: 09 817 7377</p>
+                    <p>Hours: Mon-Fri 7am-7pm, Sat 8am-1pm</p>
+                    <a href="https://total-body-physio.au1.cliniko.com/bookings?business_id=90865" class="button" target="_blank">Book at Titirangi</a>
+                </div>
+                <div class="location">
+                    <h3>Flat Bush</h3>
+                    <p><a href="https://www.google.com/maps/search/?api=1&query=Total+Body+Physio+Flat+Bush,+14+Fusion+Rd,+Flat+Bush,+Auckland" target="_blank">14 Fusion Rd, Flat Bush, Auckland</p>
+                    <p>Phone: 09 265 2323</p>
+                    <p>Hours: Mon-Fri 7am-7pm, Sat 8am-1pm</p>
+                    <a href="https://total-body-physio.au1.cliniko.com/bookings?business_id=90635" class="button" target="_blank">Book at Flat Bush</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ... (about section remains the same) ... -->
+
+    <section id="faq" class="faq">
+        <div class="section-header">
+            <h2>Frequently Asked Questions</h2>
+        </div>
+        <div class="container">
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">What should I expect during my first visit?</div>
+                <div class="faq-answer">
+                    <p>During your first visit, our expert physiotherapist will conduct a comprehensive assessment. This includes discussing your medical history, current symptoms, and goals. We'll perform a physical examination to evaluate your condition. Based on this assessment, we'll develop a personalised treatment plan tailored to your specific needs and explain the proposed course of action.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">Do I need a referral to see a physiotherapist?</div>
+                <div class="faq-answer">
+                    <p>In New Zealand, you generally don't need a referral to see a physiotherapist for private treatment. You can book an appointment directly with us. However, if you're seeking treatment for an ACC-covered injury, you may need a referral from your GP or specialist. If you're unsure, give us a call, and we'll be happy to guide you through the process.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">What should I wear to my appointment?</div>
+                <div class="faq-answer">
+                    <p>We recommend wearing comfortable, loose-fitting clothing that allows easy access to the area being treated. For lower body issues, shorts or loose trousers are ideal. For upper body concerns, a tank top or loose shirt works well. If you're coming directly from work, don't worry - we can provide gowns or shorts if needed.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">How long does a typical physiotherapy session last?</div>
+                <div class="faq-answer">
+                    <p>A typical physiotherapy session at Total Body Physio lasts between 30 to 60 minutes, depending on the nature and complexity of your condition. Initial consultations may take longer as they include a comprehensive assessment. We ensure that each session provides sufficient time for treatment and any necessary education or exercise instruction.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">How do I book an appointment?</div>
+                <div class="faq-answer">
+                    <p>Booking an appointment is easy! You can use our online booking system, which is available 24/7, or give us a call during business hours. Our friendly staff will be happy to assist you in finding a suitable time slot.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">What is your cancellation policy?</div>
+                <div class="faq-answer">
+                    <p>We understand that sometimes plans change. We kindly ask for at least 24 hours' notice if you need to cancel or reschedule your appointment. Late cancellations or no-shows may incur a $40 fee. You can cancel by phone, email, or replying to your confirmation SMS.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">What is an ACC appointment?</div>
+                <div class="faq-answer">
+                    <p>An ACC appointment is a physiotherapy session covered by the Accident Compensation Corporation (ACC) in New Zealand. If you've been injured in an accident, ACC may cover part or all of your treatment costs. We can help you navigate the ACC process and provide the necessary treatment for your injury.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Total Body Physio. All rights reserved.</p>
+        </div>
+    </footer>
 
     <script>
-        function openPractitionerModal(practitionerId) {
-            var modal = document.getElementById("practitionerModal");
-            var details = document.getElementById("practitionerDetails");
-            var booking = document.getElementById("practitionerBooking");
-
-            // Set practitioner details based on ID
-            if (practitionerId === 'timothy-keung') {
-                details.innerHTML = `
-                    <h2>Timothy Keung</h2>
-                    <p>Timothy is a dedicated and enthusiastic physiotherapist who has been with Total Body Physio for over a year. Fluent in Mandarin, Cantonese, and English, Timothy is able to provide care to a diverse range of patients across our Auckland locations.</p>
-                    <h3>Specialties:</h3>
-                    <ul>
-                        <li>Sports Rehabilitation</li>
-                        <li>Manual Therapy</li>
-                        <li>Acupuncture (in training)</li>
-                    </ul>
-                `;
-                booking.innerHTML = `
-                    <iframe id='cliniko-63898223' src='https://total-body-physio.au1.cliniko.com/bookings?business_id=90633&practitioner_id=172332&embedded=true' frameborder='0' scrolling='auto' width='100%' height='1000'></iframe>
-                `;
-            } else if (practitionerId === 'dylan-connolly') {
-                details.innerHTML = `
-                    <h2>Dylan Connolly</h2>
-                    <p>Dylan is a friendly and motivated physiotherapist, originally from Ireland. He has experience in sports physiotherapy, particularly in football, and plays at a high level in New Zealand.</p>
-                    <h3>Specialties:</h3>
-                    <ul>
-                        <li>Sports Injuries</li>
-                        <li>Lower Back Pain</li>
-                        <li>Shoulder Pain</li>
-                        <li>Post-operative Rehab</li>
-                    </ul>
-                `;
-                booking.innerHTML = `
-                    <iframe id='cliniko-63898223' src='https://total-body-physio.au1.cliniko.com/bookings?business_id=90633&practitioner_id=1243762082222966342&embedded=true' frameborder='0' scrolling='auto' width='100%' height='1000'></iframe>
-                `;
-            } else if (practitionerId === 'alistair-burgess') {
-                details.innerHTML = `
-                    <h2>Alistair Burgess</h2>
-                    <p>Alistair is an experienced physiotherapist with over 8 years in private practice. He has a comprehensive understanding of clinical assessment and treatment, specializing in Strength Training, Movement Assessment, and Shoulder and Core Rehabilitation.</p>
-                    <h3>Specialties:</h3>
-                    <ul>
-                        <li>Strength Training</li>
-                        <li>Movement Assessment</li>
-                        <li>Shoulder Rehabilitation</li>
-                        <li>Core Rehabilitation</li>
-                    </ul>
-                `;
-                booking.innerHTML = `
-                    <iframe id='cliniko-63898223' src='https://total-body-physio.au1.cliniko.com/bookings?business_id=90633&practitioner_id=1274037115297990613&embedded=true' frameborder='0' scrolling='auto' width='100%' height='1000'></iframe>
-                `;
-            } else if (practitionerId === 'jen-hong') {
-                details.innerHTML = `
-                    <h2>Jen Hong</h2>
-                    <p>Jen Hong is an experienced physiotherapist with over 5 years of experience since graduating from the University of Otago. She is fluent in Korean and specializes in treating various conditions, including concussion, lower back pain, and sports-related injuries.</p>
-                    <h3>Specialties:</h3>
-                    <ul>
-                        <li>Concussion Management</li>
-                        <li>Lower Back Pain</li>
-                        <li>Sports Injuries</li>
-                        <li>Acupuncture</li>
-                    </ul>
-                `;
-                booking.innerHTML = `
-                    <iframe id='cliniko-63898223' src='https://total-body-physio.au1.cliniko.com/bookings?business_id=90633&practitioner_id=151553&embedded=true' frameborder='0' scrolling='auto' width='100%' height='1000'></iframe>
-                `;
+        function openModal(service) {
+            var modal = document.getElementById("serviceModal");
+            var title = document.getElementById("modalTitle");
+            var content = document.getElementById("modalContent");
+            
+            // Set content based on the service
+            switch(service) {
+                case 'sports-rehab':
+                    title.innerHTML = "Sports Injury Rehabilitation";
+                    content.innerHTML = "Our sports injury rehabilitation program is designed to help athletes of all levels recover from injuries and improve their performance. We use a combination of manual therapy, exercise prescription, and cutting-edge techniques to get you back in the game stronger than ever.";
+                    break;
+                case 'manual-therapy':
+                    title.innerHTML = "Manual Therapy";
+                    content.innerHTML = "Manual therapy involves hands-on techniques to manipulate and mobilize your joints and soft tissues. Our skilled physiotherapists use these techniques to reduce pain, improve flexibility, and restore normal function to your body.";
+                    break;
+                case 'postural-correction':
+                    title.innerHTML = "Postural Correction";
+                    content.innerHTML = "Poor posture can lead to pain, reduced mobility, and decreased performance. Our postural correction program includes a thorough assessment of your posture and a personalized plan to address any imbalances, helping you achieve better alignment and reduce strain on your body.";
+                    break;
+                case 'careway':
+                    title.innerHTML = "Careway Pathway";
+                    content.innerHTML = "The Careway Pathway is an ACC-funded program designed to provide comprehensive care for specific injuries. This program ensures you receive the right treatment at the right time, with a focus on getting you back to your normal activities as quickly and safely as possible.";
+                    break;
+                case 'acupuncture':
+                    title.innerHTML = "Acupuncture/Dry Needling";
+                    content.innerHTML = "Acupuncture and dry needling are effective techniques for pain relief and promoting natural healing. Our trained physiotherapists use these methods to target specific points in your body, helping to reduce pain, improve circulation, and enhance your body's natural healing processes.";
+                    break;
             }
-
+            
             modal.style.display = "block";
         }
 
-        // ... (rest of the JavaScript remains the same) ...
+        function closeModal() {
+            var modal = document.getElementById("serviceModal");
+            modal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            var modal = document.getElementById("serviceModal");
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        function toggleFAQ(question) {
+            var answer = question.nextElementSibling;
+            answer.classList.toggle('active');
+        }
+
+        function toggleAboutSnippet() {
+            var snippet = document.getElementById('about-snippet');
+            var readMore = document.querySelector('.read-more');
+            snippet.classList.toggle('expanded');
+            readMore.textContent = snippet.classList.contains('expanded') ? 'Read Less' : 'Read More';
+        }
     </script>
 </body>
 </html>
