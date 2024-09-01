@@ -3,204 +3,326 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Total Body Physio | Expert Physiotherapy Services | Auckland</title>
-    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
-    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
-    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/lucide.min.js"></script>
+    <title>Total Body Physio - Expert Physiotherapy in Auckland</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 0; 
+            padding: 0; 
+            color: #036F39; 
+            line-height: 1.6;
+        }
+        .container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding: 0 20px; 
+        }
+        header { 
+            background-color: #fff; 
+            padding: 1rem 0; 
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .header-content { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+        .logo { 
+            max-width: 200px; 
+            height: auto; 
+        }
+        nav ul { 
+            list-style-type: none; 
+            padding: 0; 
+            display: flex; 
+            gap: 20px; 
+        }
+        nav ul li a { 
+            text-decoration: none; 
+            color: #036F39; 
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        nav ul li a:hover {
+            color: #8DC63F;
+        }
+        .hero { 
+            background-color: #8DC63F; 
+            color: #fff; 
+            text-align: center; 
+            padding: 4rem 0; 
+        }
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+        .services, .locations, .about, .faq { 
+            padding: 4rem 0; 
+        }
+        .services-grid, .locations-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 2rem; 
+            margin-top: 2rem;
+        }
+        .service, .location { 
+            background-color: #f4f4f4; 
+            padding: 2rem; 
+            border-radius: 10px; 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .service:hover, .location:hover {
+            transform: translateY(-5px);
+        }
+        .service-details { 
+            display: none; 
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            z-index: 1000;
+            max-width: 80%;
+            max-height: 80%;
+            overflow-y: auto;
+        }
+        .service-details.active {
+            display: block;
+        }
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 999;
+        }
+        .modal-overlay.active {
+            display: block;
+        }
+        .close-modal {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        .faq-item { 
+            margin-bottom: 1rem; 
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .faq-question { 
+            background-color: #f4f4f4; 
+            padding: 1rem; 
+            cursor: pointer; 
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        .faq-question:hover {
+            background-color: #e0e0e0;
+        }
+        .faq-answer { 
+            display: none; 
+            padding: 1rem; 
+            background-color: #fff;
+        }
+        footer { 
+            background-color: #036F39; 
+            color: #fff; 
+            text-align: center; 
+            padding: 2rem 0; 
+        }
+        .button { 
+            background-color: #036F39; 
+            color: #fff; 
+            padding: 0.75rem 1.5rem; 
+            text-decoration: none; 
+            border-radius: 5px; 
+            display: inline-block; 
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        .button:hover {
+            background-color: #025a2f;
+        }
+        .section-header {
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            text-align: center;
+            padding: 4rem 0;
+            position: relative;
+        }
+        .section-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0,0,0,0.5);
+        }
+        .section-header h2 {
+            position: relative;
+            z-index: 1;
+            font-size: 2.5rem;
+            margin: 0;
+        }
+        .about-snippet {
+            max-height: 100px;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        .about-snippet.expanded {
+            max-height: 1000px;
+        }
+        .read-more {
+            color: #036F39;
+            cursor: pointer;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
-    <div id="root"></div>
+    <header>
+        <div class="container header-content">
+            <img src="logo-placeholder.png" alt="Total Body Physio Logo" class="logo">
+            <nav>
+                <ul>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#locations">Locations</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-    <script type="text/babel">
-        // Import necessary components
-        const { useState } = React;
-        const { X } = lucide;
+    <section class="hero">
+        <div class="container">
+            <h1>Empowering Movement, Enhancing Lives</h1>
+            <p>At Total Body Physio, we're dedicated to helping you achieve optimal physical health and well-being. Our expert team uses evidence-based techniques to address your unique needs and get you back to doing what you love.</p>
+            <a href="#" class="button">Book an Appointment</a>
+        </div>
+    </section>
 
-        // Service Modal Component
-        const ServiceModal = ({ services }) => {
-            const [selectedService, setSelectedService] = useState(null);
-
-            const openModal = (service) => {
-                setSelectedService(service);
-            };
-
-            const closeModal = () => {
-                setSelectedService(null);
-            };
-
-            return (
-                <div className="container mx-auto p-4">
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        {services.map((service) => (
-                            <button
-                                key={service.id}
-                                className="bg-blue-500 text-white p-4 rounded"
-                                onClick={() => openModal(service)}
-                            >
-                                {service.title}
-                            </button>
-                        ))}
-                    </div>
-
-                    {selectedService && (
-                        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-                            <div className="bg-white p-8 rounded-lg max-w-md w-full">
-                                <div className="flex justify-between items-center mb-4">
-                                    <h2 className="text-xl font-bold">{selectedService.title}</h2>
-                                    <button onClick={closeModal}>
-                                        <X size={24} />
-                                    </button>
-                                </div>
-                                <p>{selectedService.description}</p>
-                            </div>
-                        </div>
-                    )}
+    <section id="services" class="services">
+        <div class="section-header" style="background-image: url('services-background.jpg');">
+            <h2>Our Services</h2>
+        </div>
+        <div class="container">
+            <div class="services-grid">
+                <div class="service">
+                    <h3>Sports Injury Rehabilitation</h3>
+                    <p>Specialized treatment for athletes of all levels.</p>
+                    <button class="button" onclick="showServiceDetails('sports-rehab')">Learn More</button>
                 </div>
-            );
-        };
-
-        // Graphic Header Component
-        const GraphicHeader = ({ title, backgroundImage }) => {
-            return (
-                <div 
-                    className="relative h-40 flex items-center justify-center text-white text-4xl font-bold"
-                    style={{
-                        backgroundImage: `url(${backgroundImage})`,
-                        backgroundSize: 'cover',
-                        backgroundPosition: 'center',
-                    }}
-                >
-                    <div className="absolute inset-0 bg-black opacity-50"></div>
-                    <h2 className="relative z-10">{title}</h2>
+                <div class="service">
+                    <h3>Manual Therapy</h3>
+                    <p>Hands-on techniques to improve mobility and reduce pain.</p>
+                    <button class="button" onclick="showServiceDetails('manual-therapy')">Learn More</button>
                 </div>
-            );
-        };
-
-        // Expandable Text Component
-        const ExpandableText = ({ text, maxLength = 150 }) => {
-            const [isExpanded, setIsExpanded] = useState(false);
-
-            const toggleExpand = () => {
-                setIsExpanded(!isExpanded);
-            };
-
-            if (text.length <= maxLength) {
-                return <p>{text}</p>;
-            }
-
-            return (
-                <div>
-                    <p>
-                        {isExpanded ? text : `${text.slice(0, maxLength)}...`}
-                    </p>
-                    <button 
-                        onClick={toggleExpand}
-                        className="text-blue-500 hover:underline mt-2"
-                    >
-                        {isExpanded ? 'Read Less' : 'Read More'}
-                    </button>
+                <div class="service">
+                    <h3>Postural Correction</h3>
+                    <p>Customized programs to improve your posture and prevent injuries.</p>
+                    <button class="button" onclick="showServiceDetails('postural-correction')">Learn More</button>
                 </div>
-            );
-        };
-
-        // Map Link Component
-        const MapLink = ({ address, businessName }) => {
-            const encodedAddress = encodeURIComponent(`${businessName}, ${address}`);
-            const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodedAddress}`;
-
-            return (
-                <a 
-                    href={mapUrl} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="text-blue-500 hover:underline"
-                >
-                    {address}
-                </a>
-            );
-        };
-
-        // Main App Component
-        const App = () => {
-            const services = [
-                { id: 1, title: "Physiotherapy", description: "Our expert physiotherapists provide tailored treatments to help you recover from injuries and manage chronic conditions." },
-                { id: 2, title: "Acupuncture", description: "We offer acupuncture services to help alleviate pain and promote overall wellness." },
-                { id: 3, title: "Sports Rehabilitation", description: "Our sports rehabilitation programs are designed to help athletes recover from injuries and improve performance." }
-            ];
-
-            const aboutText = "Total Body Physio is Auckland's leading physiotherapy provider, offering comprehensive care since 2002. Our team of experienced physiotherapists is dedicated to helping you achieve optimal health and well-being through personalized treatment plans and evidence-based techniques.";
-
-            return (
-                <div>
-                    <header className="bg-blue-600 text-white p-4">
-                        <h1 className="text-2xl font-bold">Total Body Physio</h1>
-                        <nav>
-                            {/* Add navigation menu items here */}
-                        </nav>
-                    </header>
-
-                    <main>
-                        <GraphicHeader title="Our Services" backgroundImage="/path/to/services-background.jpg" />
-                        <ServiceModal services={services} />
-
-                        <GraphicHeader title="About Us" backgroundImage="/path/to/about-background.jpg" />
-                        <div className="container mx-auto p-4">
-                            <ExpandableText text={aboutText} />
-                        </div>
-
-                        <GraphicHeader title="Our Locations" backgroundImage="/path/to/locations-background.jpg" />
-                        <div className="container mx-auto p-4">
-                            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                                <div>
-                                    <h3 className="font-bold">Pakuranga</h3>
-                                    <MapLink address="1 Sir Lloyd Drive, Pakuranga" businessName="Total Body Physio Pakuranga" />
-                                </div>
-                                <div>
-                                    <h3 className="font-bold">Flat Bush</h3>
-                                    <MapLink address="14 Fusion Rd, Flat Bush, Auckland 2019" businessName="Total Body Physio Flat Bush" />
-                                </div>
-                                <div>
-                                    <h3 className="font-bold">Titirangi</h3>
-                                    <MapLink address="2 Rangiwai Rd, Titirangi" businessName="Total Body Physio Titirangi" />
-                                </div>
-                            </div>
-                        </div>
-
-                        <GraphicHeader title="FAQ" backgroundImage="/path/to/faq-background.jpg" />
-                        {/* Add FAQ content here */}
-                    </main>
-
-                    <footer className="bg-gray-800 text-white py-8">
-                        <div className="container mx-auto px-4">
-                            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                                <div>
-                                    <h3 className="text-lg font-bold mb-2">Pakuranga</h3>
-                                    <p>09 535 1932</p>
-                                    <p>pakuranga@totalbodyphysio.co.nz</p>
-                                </div>
-                                <div>
-                                    <h3 className="text-lg font-bold mb-2">Flat Bush</h3>
-                                    <p>09 265 2323</p>
-                                    <p>botany@totalbodyphysio.co.nz</p>
-                                </div>
-                                <div>
-                                    <h3 className="text-lg font-bold mb-2">Titirangi</h3>
-                                    <p>09 817 7377</p>
-                                    <p>titirangi@totalbodyphysio.co.nz</p>
-                                </div>
-                            </div>
-                            <div className="mt-8 text-center">
-                                <p>&copy; 2023 by Total Body Physio. All rights reserved.</p>
-                            </div>
-                        </div>
-                    </footer>
+                <div class="service">
+                    <h3>Careway Pathway</h3>
+                    <p>ACC-funded program for specific injuries.</p>
+                    <button class="button" onclick="showServiceDetails('careway')">Learn More</button>
                 </div>
-            );
-        };
+                <div class="service">
+                    <h3>Acupuncture/Dry Needling</h3>
+                    <p>Effective techniques to alleviate pain and promote healing.</p>
+                    <button class="button" onclick="showServiceDetails('acupuncture')">Learn More</button>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        ReactDOM.render(<App />, document.getElementById('root'));
-    </script>
-</body>
-</html>
+    <div id="modal-overlay" class="modal-overlay"></div>
+    <div id="service-details" class="service-details">
+        <span class="close-modal" onclick="closeServiceDetails()">&times;</span>
+        <div id="service-content"></div>
+    </div>
+
+    <section id="locations" class="locations">
+        <div class="section-header" style="background-image: url('locations-background.jpg');">
+            <h2>Our Locations</h2>
+        </div>
+        <div class="container">
+            <div class="locations-grid">
+                <div class="location">
+                    <h3>Pakuranga</h3>
+                    <p><a href="https://www.google.com/maps/search/?api=1&query=Total+Body+Physio+Pakuranga,+1+Sir+Lloyd+Drive,+Pakuranga+Heights,+Auckland" target="_blank">1 Sir Lloyd Drive, Pakuranga Heights, Auckland</a></p>
+                    <p>Phone: 09 535 1932</p>
+                    <p>Hours: Mon-Fri 7am-7pm, Sat 8am-1pm</p>
+                    <a href="https://www.totalbodyphysio.co.nz/our-story-pakuranga" class="button">Book at Pakuranga</a>
+                </div>
+                <div class="location">
+                    <h3>Titirangi</h3>
+                    <p><a href="https://www.google.com/maps/search/?api=1&query=Total+Body+Physio+Titirangi,+2+Rangiwai+Rd,+Titirangi,+Auckland" target="_blank">2 Rangiwai Rd, Titirangi, Auckland</a></p>
+                    <p>Phone: 09 817 7377</p>
+                    <p>Hours: Mon-Fri 7am-7pm, Sat 8am-1pm</p>
+                    <a href="https://www.totalbodyphysio.co.nz/our-story-titirangi" class="button">Book at Titirangi</a>
+                </div>
+                <div class="location">
+                    <h3>Flat Bush</h3>
+                    <p><a href="https://www.google.com/maps/search/?api=1&query=Total+Body+Physio+Flat+Bush,+14+Fusion+Rd,+Flat+Bush,+Auckland" target="_blank">14 Fusion Rd, Flat Bush, Auckland</a></p>
+                    <p>Phone: 09 265 2323</p>
+                    <p>Hours: Mon-Fri 7am-7pm, Sat 8am-1pm</p>
+                    <a href="https://www.totalbodyphysio.co.nz/our-story-flatbush-botanyjunction" class="button">Book at Flat Bush</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="section-header" style="background-image: url('about-background.jpg');">
+            <h2>About Total Body Physio</h2>
+        </div>
+        <div class="container">
+            <div class="about-snippet" id="about-snippet">
+                <p>Founded in 2000, Total Body Physio has been at the forefront of physiotherapy care in Auckland for over two decades. Our journey began with a simple yet powerful goal: to provide exceptional physiotherapy care that truly makes a difference in people's lives.</p>
+                <p>Over the years, we've grown our practice not just in size, but in the depth and quality of care we offer. Our growth has always been driven by our desire to help more people, not simply to increase profits. We believe that by expanding our reach, we can positively impact more lives and contribute to the overall health and wellbeing of our community.</p>
+            </div>
+            <p class="read-more" onclick="toggleAboutSnippet()">Read More</p>
+        </div>
+    </section>
+
+    <section id="faq" class="faq">
+        <div class="section-header" style="background-image: url('faq-background.jpg');">
+            <h2>Frequently Asked Questions</h2>
+        </div>
+        <div class="container">
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">What should I expect during my first visit?</div>
+                <div class="faq-answer">
+                    <p>During your first visit, our expert physiotherapist will conduct a comprehensive assessment. This includes discussing your medical history, current symptoms, and goals. We'll perform a physical examination to evaluate your condition. Based on this assessment, we'll develop a personalised treatment plan tailored to your specific needs and explain the proposed course of action.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">Do I need a referral to see a physiotherapist?</div>
+                <div class="faq-answer">
+                    <p>In New Zealand, you generally don't need a referral to see a physiotherapist for private treatment. You can book an appointment directly with us. However, if you're seeking treatment for an ACC-covered injury, you may need a referral from your GP or specialist. If you're unsure, give us a call, and we'll be happy to guide you through the process.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">What should I wear to my appointment?</div>
+                <div class="faq-answer">
+                    <p>We recommend wearing comfortable, loose-fitting clothing that allows easy access to the area being treated. For lower body issues, shorts or loose trousers are ideal. For upper body concerns, a tank top or loose shirt works well. If you're coming directly from work, don't worry - we can provide gowns or shorts if needed.</p>
+                </div>
