@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Total Body Physio - Flat Bush Clinic</title>
+    <style>
+        /* Add your styles here (same as Pakuranga page) */
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Total Body Physio - Flat Bush Clinic</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <section id="about">
+            <h2>About Our Flat Bush Clinic</h2>
+            <div class="clinic-info">
+                <div class="clinic-details">
+                    <p>Our Flat Bush clinic, established in [YEAR], is our newest addition to the Total Body Physio family. Located at 14 Fusion Rd, Flat Bush, Auckland, our state-of-the-art facility offers comprehensive physiotherapy services to the growing Flat Bush community.</p>
+                    <h3>Contact Information:</h3>
+                    <p>Phone: 09 265 2323</p>
+                    <p>Email: flatbush@totalbodyphysio.co.nz</p>
+                    <p>Address: 14 Fusion Rd, Flat Bush, Auckland</p>
+                    <h3>Opening Hours:</h3>
+                    <p>Monday - Friday: 7am - 7pm</p>
+                    <p>Saturday: 8am - 1pm</p>
+                    <p>Sunday: Closed</p>
+                </div>
+                <div class="clinic-image">
+                    <!-- Add your clinic image here -->
+                    <img src="flat-bush-clinic.jpg" alt="Flat Bush Clinic">
+                </div>
+            </div>
+        </section>
+
+        <section id="services">
+            <h2>Our Services</h2>
+            <ul>
+                <li>Sports Injury Rehabilitation</li>
+                <li>Manual Therapy</li>
+                <li>Postural Correction</li>
+                <li>Acupuncture/Dry Needling</li>
+                <li>Careway Pathway (ACC-funded program)</li>
+            </ul>
+        </section>
+
+        <section id="team">
+            <h2>Our Team</h2>
+            <!-- Add links to individual physiotherapist pages here -->
+            <ul>
+                <li><a href="jen-hong.html">Jen Hong</a></li>
+                <li><a href="ishwari-pillay.html">Ishwari Pillay</a></li>
+                <li><a href="isabella-yang.html">Isabella Yang</a></li>
+                <!-- Add more physiotherapists as needed -->
+            </ul>
+        </section>
+
+        <section id="booking">
+            <h2>Book an Appointment</h2>
+            <p>Ready to start your journey to better health? Book an appointment with us today!</p>
+            <a href="https://total-body-physio.au1.cliniko.com/bookings?business_id=90635" target="_blank" class="button">Book Now</a>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Total Body Physio. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
