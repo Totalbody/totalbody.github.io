@@ -128,147 +128,24 @@
         .button:hover {
             background-color: #025a2f;
         }
-    </style>
-</head>
-<body>
-    <header>
-        <div class="container header-content">
-            <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Total Body Physio - Expert Physiotherapy in Auckland</title>
-    <style>
-        body { 
-            font-family: Arial, sans-serif; 
-            margin: 0; 
-            padding: 0; 
-            color: #036F39; 
-            line-height: 1.6;
+        .location {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
-        .container { 
-            max-width: 1200px; 
-            margin: 0 auto; 
-            padding: 0 20px; 
+        .location-info {
+            flex-grow: 1;
         }
-        header { 
-            background-color: #fff; 
-            padding: 1rem 0; 
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        .header-content { 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-        }
-        .logo { 
-            max-width: 200px; 
-            height: auto; 
-        }
-        nav ul { 
-            list-style-type: none; 
-            padding: 0; 
-            display: flex; 
-            gap: 20px; 
-        }
-        nav ul li a { 
-            text-decoration: none; 
-            color: #036F39; 
-            font-weight: bold;
-            transition: color 0.3s ease;
-        }
-        nav ul li a:hover {
-            color: #8DC63F;
-        }
-        .hero { 
-            background-color: #8DC63F; 
-            color: #fff; 
-            text-align: center; 
-            padding: 4rem 0; 
-        }
-        .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto 2rem;
-        }
-        .services, .locations, .about, .faq { 
-            padding: 4rem 0; 
-        }
-        .services-grid, .locations-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-            gap: 2rem; 
-            margin-top: 2rem;
-        }
-        .service, .location { 
-            background-color: #f4f4f4; 
-            padding: 2rem; 
-            border-radius: 10px; 
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-        .service:hover, .location:hover {
-            transform: translateY(-5px);
-        }
-        .service-details { 
-            display: none; 
-            margin-top: 1rem; 
-            background-color: #fff; 
-            padding: 1rem; 
-            border-radius: 5px; 
-            border: 1px solid #ddd;
-        }
-        .faq-item { 
-            margin-bottom: 1rem; 
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            overflow: hidden;
-        }
-        .faq-question { 
-            background-color: #f4f4f4; 
-            padding: 1rem; 
-            cursor: pointer; 
-            font-weight: bold;
-            transition: background-color 0.3s ease;
-        }
-        .faq-question:hover {
-            background-color: #e0e0e0;
-        }
-        .faq-answer { 
-            display: none; 
-            padding: 1rem; 
-            background-color: #fff;
-        }
-        footer { 
-            background-color: #036F39; 
-            color: #fff; 
-            text-align: center; 
-            padding: 2rem 0; 
-        }
-        .button { 
-            background-color: #036F39; 
-            color: #fff; 
-            padding: 0.75rem 1.5rem; 
-            text-decoration: none; 
-            border-radius: 5px; 
-            display: inline-block; 
-            font-weight: bold;
-            transition: background-color 0.3s ease;
-        }
-        .button:hover {
-            background-color: #025a2f;
+        .location .button {
+            align-self: flex-start;
+            margin-top: auto;
         }
     </style>
 </head>
 <body>
     <header>
         <div class="container header-content">
-            <img src="logo-placeholder.png" alt="Total Body Physio Logo" class="logo">
+            <img src="https://via.placeholder.com/200x50.png?text=Total+Body+Physio" alt="Total Body Physio Logo" class="logo">
             <nav>
                 <ul>
                     <li><a href="#services">Services</a></li>
@@ -376,24 +253,30 @@
             <h2>Our Locations</h2>
             <div class="locations-grid">
                 <div class="location">
-                    <h3>Pakuranga</h3>
-                    <p>1 Sir Lloyd Drive, Pakuranga Heights, Auckland</p>
-                    <p>Phone: 09 535 1932</p>
-                    <p>Hours: Mon-Fri 7am-7pm, Sat 8am-1pm</p>
+                    <div class="location-info">
+                        <h3>Pakuranga</h3>
+                        <p>1 Sir Lloyd Drive, Pakuranga Heights, Auckland</p>
+                        <p>Phone: 09 535 1932</p>
+                        <p>Hours: Mon-Fri 7am-7pm, Sat 8am-1pm</p>
+                    </div>
                     <a href="#" class="button">Book at Pakuranga</a>
                 </div>
                 <div class="location">
-                    <h3>Titirangi</h3>
-                    <p>2 Rangiwai Rd, Titirangi, Auckland</p>
-                    <p>Phone: 09 817 7377</p>
-                    <p>Hours: Mon-Fri 7am-7pm, Sat 8am-1pm</p>
+                    <div class="location-info">
+                        <h3>Titirangi</h3>
+                        <p>2 Rangiwai Rd, Titirangi, Auckland</p>
+                        <p>Phone: 09 817 7377</p>
+                        <p>Hours: Mon-Fri 7am-7pm, Sat 8am-1pm</p>
+                    </div>
                     <a href="#" class="button">Book at Titirangi</a>
                 </div>
                 <div class="location">
-                    <h3>Flat Bush</h3>
-                    <p>14 Fusion Rd, Flat Bush, Auckland</p>
-                    <p>Phone: 09 265 2323</p>
-                    <p>Hours: Mon-Fri 7am-7pm, Sat 8am-1pm</p>
+                    <div class="location-info">
+                        <h3>Flat Bush</h3>
+                        <p>14 Fusion Rd, Flat Bush, Auckland</p>
+                        <p>Phone: 09 265 2323</p>
+                        <p>Hours: Mon-Fri 7am-7pm, Sat 8am-1pm</p>
+                    </div>
                     <a href="#" class="button">Book at Flat Bush</a>
                 </div>
             </div>
@@ -423,184 +306,4 @@
                 <div class="faq-answer">In New Zealand, you generally don't need a referral to see a physiotherapist for private treatment. You can book an appointment directly with us. However, if you're seeking treatment for an ACC-covered injury, you may need a referral from your GP or specialist. If you're unsure, give us a call, and we'll be happy to guide you through the process.</div>
             </div>
             <div class="faq-item">
-                <div class="faq-question">What should I wear to my appointment?</div>
-                <div class="faq-answer">We recommend wearing comfortable, loose-fitting clothing that allows easy access to the area being treated. For lower body issues, shorts or loose trousers are ideal. For upper body concerns, a tank top or loose shirt works well. If you're coming directly from work, don't worry - we can provide gowns or shorts if needed.</div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">How long does a typical physiotherapy session last?</div>
-            <nav>
-                <ul>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#locations">Locations</a></li>
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="#faq">FAQ</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <section class="hero">
-        <div class="container">
-            <h1>Empowering Movement, Enhancing Lives</h1>
-            <p>At Total Body Physio, we're dedicated to helping you achieve optimal physical health and well-being. Our expert team uses evidence-based techniques to address your unique needs and get you back to doing what you love.</p>
-            <a href="#" class="button">Book an Appointment</a>
-        </div>
-    </section>
-
-    <section id="services" class="services">
-        <div class="container">
-            <h2>Our Services</h2>
-            <div class="services-grid">
-                <div class="service">
-                    <h3>Sports Injury Rehabilitation</h3>
-                    <p>Specialized treatment for athletes of all levels, from weekend warriors to professionals.</p>
-                    <button class="button" onclick="toggleServiceDetails('sports-rehab')">Learn More</button>
-                    <div id="sports-rehab" class="service-details">
-                        <p>Our sports injury rehabilitation program is designed to help athletes recover quickly and safely from injuries. We use a combination of targeted exercises, manual therapy, and cutting-edge techniques to address your specific needs and get you back in the game stronger than ever.</p>
-                        <ul>
-                            <li>Comprehensive injury assessment</li>
-                            <li>Customized rehabilitation plans</li>
-                            <li>Sport-specific training and conditioning</li>
-                            <li>Injury prevention strategies</li>
-                            <li>Performance enhancement techniques</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="service">
-                    <h3>Manual Therapy</h3>
-                    <p>Hands-on techniques to improve mobility, reduce pain, and enhance overall physical function.</p>
-                    <button class="button" onclick="toggleServiceDetails('manual-therapy')">Learn More</button>
-                    <div id="manual-therapy" class="service-details">
-                        <p>Our manual therapy services provide targeted, hands-on treatment to address a wide range of musculoskeletal issues. Our skilled physiotherapists use various techniques to manipulate and mobilize your joints and soft tissues, promoting healing and improving function.</p>
-                        <ul>
-                            <li>Joint mobilization and manipulation</li>
-                            <li>Soft tissue massage and release</li>
-                            <li>Myofascial release techniques</li>
-                            <li>Trigger point therapy</li>
-                            <li>Stretching and strengthening exercises</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="service">
-                    <h3>Postural Correction</h3>
-                    <p>Customized programs to improve your posture, prevent injuries, and alleviate chronic pain.</p>
-                    <button class="button" onclick="toggleServiceDetails('postural-correction')">Learn More</button>
-                    <div id="postural-correction" class="service-details">
-                        <p>Poor posture can lead to a range of health issues, including back pain, neck strain, and reduced mobility. Our postural correction program is designed to address these issues and improve your overall posture and wellbeing.</p>
-                        <ul>
-                            <li>Comprehensive posture assessment</li>
-                            <li>Customized exercise programs</li>
-                            <li>Ergonomic advice for work and home</li>
-                            <li>Manual therapy to address muscle imbalances</li>
-                            <li>Education on maintaining good posture</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="service">
-                    <h3>Careway Pathway</h3>
-                    <p>ACC-funded program for specific injuries, providing comprehensive care and support.</p>
-                    <button class="button" onclick="toggleServiceDetails('careway')">Learn More</button>
-                    <div id="careway" class="service-details">
-                        <p>The Careway Pathway is a fully funded ACC program providing surgical or non-surgical pathways for specific injuries such as shoulder tears, dislocations, and knee injuries (ACL and dislocations).</p>
-                        <ul>
-                            <li>Comprehensive assessment and diagnosis</li>
-                            <li>Tailored treatment plans</li>
-                            <li>Regular progress monitoring</li>
-                            <li>Coordination with specialists and surgeons when necessary</li>
-                            <li>Post-surgery rehabilitation (if applicable)</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="service">
-                    <h3>Acupuncture/Dry Needling</h3>
-                    <p>Effective techniques to alleviate pain, improve circulation, and promote natural healing.</p>
-                    <button class="button" onclick="toggleServiceDetails('acupuncture')">Learn More</button>
-                    <div id="acupuncture" class="service-details">
-                        <p>Our trained physiotherapists use acupuncture and dry needling to target specific points in the body, helping to relieve pain, improve circulation, and promote natural healing processes.</p>
-                        <ul>
-                            <li>Pain relief for chronic conditions</li>
-                            <li>Improved muscle function and flexibility</li>
-                            <li>Enhanced blood flow and healing</li>
-                            <li>Stress reduction and relaxation</li>
-                            <li>Complementary treatment for various musculoskeletal issues</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="locations" class="locations">
-        <div class="container">
-            <h2>Our Locations</h2>
-            <div class="locations-grid">
-                <div class="location">
-                    <h3>Pakuranga</h3>
-                    <p>1 Sir Lloyd Drive, Pakuranga Heights, Auckland</p>
-                    <p>Phone: 09 535 1932</p>
-                    <p>Hours: Mon-Fri 7am-7pm, Sat 8am-1pm</p>
-                    <a href="#" class="button">Book at Pakuranga</a>
-                </div>
-                <div class="location">
-                    <h3>Titirangi</h3>
-                    <p>2 Rangiwai Rd, Titirangi, Auckland</p>
-                    <p>Phone: 09 817 7377</p>
-                    <p>Hours: Mon-Fri 7am-7pm, Sat 8am-1pm</p>
-                    <a href="#" class="button">Book at Titirangi</a>
-                </div>
-                <div class="location">
-                    <h3>Flat Bush</h3>
-                    <p>14 Fusion Rd, Flat Bush, Auckland</p>
-                    <p>Phone: 09 265 2323</p>
-                    <p>Hours: Mon-Fri 7am-7pm, Sat 8am-1pm</p>
-                    <a href="#" class="button">Book at Flat Bush</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="about" class="about">
-        <div class="container">
-            <h2>About Total Body Physio</h2>
-            <p>Founded in 2000, Total Body Physio has been at the forefront of physiotherapy care in Auckland for over two decades. Our journey began with a simple yet powerful goal: to provide exceptional physiotherapy care that truly makes a difference in people's lives.</p>
-            <p>Over the years, we've grown our practice not just in size, but in the depth and quality of care we offer. Our growth has always been driven by our desire to help more people, not simply to increase profits. We believe that by expanding our reach, we can positively impact more lives and contribute to the overall health and wellbeing of our community.</p>
-            <p>At Total Body Physio, we pride ourselves on our hands-on approach. We combine expert manual therapy with personalised exercise programs, always focusing on the individual needs of each patient. Our style is complemented by what we call our 'best practices' - a blend of evidence-based techniques and our collective experience that ensures the highest standard of care.</p>
-            <p>We're not just physiotherapists; we're partners in your health journey. Our team's personality shines through in every interaction, creating a warm, welcoming environment where healing and improvement flourish. We're committed to continual learning and improvement, always striving to bring the latest and most effective physiotherapy techniques to our practice.</p>
-            <p>Choose Total Body Physio for care that goes beyond treatment - we're here to educate, support, and empower you on your path to optimal physical health.</p>
-        </div>
-    </section>
-
-    <section id="faq" class="faq">
-        <div class="container">
-            <h2>Frequently Asked Questions</h2>
-            <div class="faq-item">
-                <div class="faq-question">What should I expect during my first visit?</div>
-                <div class="faq-answer">During your first visit, our expert physiotherapist will conduct a comprehensive assessment. This includes discussing your medical history, current symptoms, and goals. We'll perform a physical examination to evaluate your condition. Based on this assessment, we'll develop a personalised treatment plan tailored to your specific needs and explain the proposed course of action.</div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">Do I need a referral to see a physiotherapist?</div>
-                <div class="faq-answer">In New Zealand, you generally don't need a referral to see a physiotherapist for private treatment. You can book an appointment directly with us. However, if you're seeking treatment for an ACC-covered injury, you may need a referral from your GP or specialist. If you're unsure, give us a call, and we'll be happy to guide you through the process.</div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">What should I wear to my appointment?</div>
-                <div class="faq-answer">We recommend wearing comfortable, loose-fitting clothing that allows easy access to the area being treated. For lower body issues, shorts or loose trousers are ideal. For upper body concerns, a tank top or loose shirt works well. If you're coming directly from work, don't worry - we can provide gowns or shorts if needed.</div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">How long does a typical physiotherapy session last?</div>
-<script>
-    function toggleServiceDetails(id) {
-        var details = document.getElementById(id);
-        if (details.style.display === "block") {
-            details.style.display = "none";
-        } else {
-            details.style.display = "block";
-        }
-    }
-
-    document.querySelectorAll('.faq-question').forEach(question => {
-        question.addEventListener('click', () => {
-            const answer = question.nextElementSibling;
-            answer.style.display = answer.style.display === 'none' ? 'block' : 'none';
-        });
-    });
-</script>
+                <div class="faq
