@@ -76,46 +76,43 @@
             border-radius: 10px; 
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
         .service:hover, .location:hover {
             transform: translateY(-5px);
         }
-        .service-details { 
-            display: none; 
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: #fff;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            z-index: 1000;
-            max-width: 80%;
-            max-height: 80%;
-            overflow-y: auto;
-        }
-        .service-details.active {
-            display: block;
-        }
-        .modal-overlay {
+        .modal {
             display: none;
             position: fixed;
-            top: 0;
+            z-index: 1000;
             left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0,0,0,0.5);
-            z-index: 999;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
         }
-        .modal-overlay.active {
-            display: block;
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+            border-radius: 10px;
         }
-        .close-modal {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            font-size: 1.5rem;
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
             cursor: pointer;
         }
         .faq-item { 
@@ -159,27 +156,13 @@
             background-color: #025a2f;
         }
         .section-header {
-            background-size: cover;
-            background-position: center;
-            color: #fff;
             text-align: center;
-            padding: 4rem 0;
-            position: relative;
-        }
-        .section-header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0,0,0,0.5);
+            padding: 2rem 0;
         }
         .section-header h2 {
-            position: relative;
-            z-index: 1;
             font-size: 2.5rem;
             margin: 0;
+            color: #036F39;
         }
         .about-snippet {
             max-height: 100px;
@@ -199,7 +182,7 @@
 <body>
     <header>
         <div class="container header-content">
-            <img src="logo-placeholder.png" alt="Total Body Physio Logo" class="logo">
+            <img src="https://github.com/Physio1/TotalBodyPhysio/blob/main/Total%20Body%20Physio%20Logo.png?raw=true" alt="Total Body Physio Logo" class="logo">
             <nav>
                 <ul>
                     <li><a href="#services">Services</a></li>
@@ -215,12 +198,12 @@
         <div class="container">
             <h1>Empowering Movement, Enhancing Lives</h1>
             <p>At Total Body Physio, we're dedicated to helping you achieve optimal physical health and well-being. Our expert team uses evidence-based techniques to address your unique needs and get you back to doing what you love.</p>
-            <a href="#" class="button">Book an Appointment</a>
+            <a href="https://total-body-physio.au1.cliniko.com/bookings" class="button" target="_blank">Book an Appointment</a>
         </div>
     </section>
 
     <section id="services" class="services">
-        <div class="section-header" style="background-image: url('services-background.jpg');">
+        <div class="section-header">
             <h2>Our Services</h2>
         </div>
         <div class="container">
@@ -228,40 +211,42 @@
                 <div class="service">
                     <h3>Sports Injury Rehabilitation</h3>
                     <p>Specialized treatment for athletes of all levels.</p>
-                    <button class="button" onclick="showServiceDetails('sports-rehab')">Learn More</button>
+                    <button class="button" onclick="openModal('sports-rehab')">Learn More</button>
                 </div>
                 <div class="service">
                     <h3>Manual Therapy</h3>
                     <p>Hands-on techniques to improve mobility and reduce pain.</p>
-                    <button class="button" onclick="showServiceDetails('manual-therapy')">Learn More</button>
+                    <button class="button" onclick="openModal('manual-therapy')">Learn More</button>
                 </div>
                 <div class="service">
                     <h3>Postural Correction</h3>
                     <p>Customized programs to improve your posture and prevent injuries.</p>
-                    <button class="button" onclick="showServiceDetails('postural-correction')">Learn More</button>
+                    <button class="button" onclick="openModal('postural-correction')">Learn More</button>
                 </div>
                 <div class="service">
                     <h3>Careway Pathway</h3>
                     <p>ACC-funded program for specific injuries.</p>
-                    <button class="button" onclick="showServiceDetails('careway')">Learn More</button>
+                    <button class="button" onclick="openModal('careway')">Learn More</button>
                 </div>
                 <div class="service">
                     <h3>Acupuncture/Dry Needling</h3>
                     <p>Effective techniques to alleviate pain and promote healing.</p>
-                    <button class="button" onclick="showServiceDetails('acupuncture')">Learn More</button>
+                    <button class="button" onclick="openModal('acupuncture')">Learn More</button>
                 </div>
             </div>
         </div>
     </section>
 
-    <div id="modal-overlay" class="modal-overlay"></div>
-    <div id="service-details" class="service-details">
-        <span class="close-modal" onclick="closeServiceDetails()">&times;</span>
-        <div id="service-content"></div>
+    <div id="serviceModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modalTitle"></h2>
+            <p id="modalContent"></p>
+        </div>
     </div>
 
     <section id="locations" class="locations">
-        <div class="section-header" style="background-image: url('locations-background.jpg');">
+        <div class="section-header">
             <h2>Our Locations</h2>
         </div>
         <div class="container">
@@ -292,7 +277,7 @@
     </section>
 
     <section id="about" class="about">
-        <div class="section-header" style="background-image: url('about-background.jpg');">
+        <div class="section-header">
             <h2>About Total Body Physio</h2>
         </div>
         <div class="container">
@@ -305,7 +290,7 @@
     </section>
 
     <section id="faq" class="faq">
-        <div class="section-header" style="background-image: url('faq-background.jpg');">
+        <div class="section-header">
             <h2>Frequently Asked Questions</h2>
         </div>
         <div class="container">
@@ -326,3 +311,8 @@
                 <div class="faq-answer">
                     <p>We recommend wearing comfortable, loose-fitting clothing that allows easy access to the area being treated. For lower body issues, shorts or loose trousers are ideal. For upper body concerns, a tank top or loose shirt works well. If you're coming directly from work, don't worry - we can provide gowns or shorts if needed.</p>
                 </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">How long does a typical physiotherapy session last?</div>
+                <div class="faq-answer">
+                    <p>A typical physiotherapy session at Total Body Physio lasts between 30 to 60 minutes, depending on the nature and complexity of your condition. Initial consultations may take longer as they include a comprehensive assessment. We ensure that each session provides sufficient time for treatment and any necessary education or exercise instruction.</p>
