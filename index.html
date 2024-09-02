@@ -297,7 +297,22 @@
             <h2>Frequently Asked Questions</h2>
         </div>
         <div class="container">
-            <!-- FAQ items here (same as before) -->
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">What is your pricing?</div>
+                <div class="faq-answer">Our pricing depends on the type of service you require. Please contact us for detailed information.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">What is your cancellation policy?</div>
+                <div class="faq-answer">We require at least 24 hours' notice for cancellations. Late cancellations may incur a fee.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">How do I book an appointment?</div>
+                <div class="faq-answer">You can book an appointment online through our website or by calling us directly.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">Do you accept ACC claims?</div>
+                <div class="faq-answer">Yes, we are ACC accredited and can help you with your claim process.</div>
+            </div>
         </div>
     </section>
 
@@ -312,7 +327,7 @@
             var modal = document.getElementById("serviceModal");
             var title = document.getElementById("modalTitle");
             var content = document.getElementById("modalContent");
-            
+
             // Set content based on the service
             switch(service) {
                 case 'sports-rehab':
@@ -341,4 +356,27 @@
         }
 
         function closeModal() {
-            var modal = document.getElementByI
+            var modal = document.getElementById("serviceModal");
+            modal.style.display = "none";
+        }
+
+        // Close modal when clicking outside of it
+        window.onclick = function(event) {
+            var modal = document.getElementById("serviceModal");
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        function toggleAboutSnippet() {
+            var snippet = document.getElementById("about-snippet");
+            snippet.classList.toggle("expanded");
+        }
+
+        function toggleFaq(element) {
+            var answer = element.nextElementSibling;
+            answer.classList.toggle("active");
+        }
+    </script>
+</body>
+</html>
